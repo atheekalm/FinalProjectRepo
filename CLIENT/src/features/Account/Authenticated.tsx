@@ -1,7 +1,12 @@
-import { Button, Menu, Fade, MenuItem } from "@mui/material";
+import { Button, Menu, Fade, MenuItem, Badge } from "@mui/material";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../test_redux/configureStore";
+import MailIcon from '@mui/icons-material/Mail';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { LogOut } from "./accountSlice";
+import AccountCircle from '@mui/icons-material/AccountCircle';
+
 
 
 
@@ -19,14 +24,31 @@ export default function Authenticated() {
 
     return (
         <>
-            
+            <Button color="inherit" component={NavLink} to={'/CreateProfile'} variant="outlined" startIcon={<AddCircleOutlineIcon />}>
+                Create Profile
+            </Button>
+            <Badge color="error" badgeContent={4} showZero component={NavLink} to={'/Messages'} sx={{ margin: '1rem' }}>
+                <MailIcon sx={{ color: 'white', }} />
+            </Badge>
             <Button
-                color='inherit'
+                // color='inherit'
                 onClick={handleClick}
                 sx={{ typography: 'h6' }}
             >
-                {user?.username}
+                <AccountCircle sx={{ color: 'white', }}/>
             </Button>
+
+            {/* <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton> */}
             <Menu
                 anchorEl={anchorEl}
                 open={open}

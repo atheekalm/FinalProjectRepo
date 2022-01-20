@@ -1,8 +1,20 @@
 import { Box, Avatar, Container, Divider, Fab, Grid, List, ListItem, ListItemIcon, ListItemText, Paper, TextField } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
+import { useAppDispatch, useAppSelector } from "../test_redux/configureStore";
+import { messageThread } from "./MessagesThread";
+// import { useState } from "react";
+// import { MessageThreadInterface } from "../../app/models/Message";
 
 
 export default function Messages() {
+    const { Messages } = useAppSelector(state => state.Messages);
+    const { MessagesThread } = useAppSelector(state => state.MessageThread);
+    const dispatch = useAppDispatch();
+    // const [usermessage, setUsermessage] = useState<MessageThreadInterface[]>([]);
+
+    const fetchmessages = (username: string) => {
+        dispatch(messageThread(username));
+    }
 
     return (
         <>
@@ -18,33 +30,14 @@ export default function Messages() {
                     <Grid container component={Paper} sx={{ mt: 5 }}>
                         <Grid item xs={3} >
                             <List>
-                                <ListItem button key="RemySharp" divider>
-                                    <ListItemIcon>
-                                        <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="John Wick" ></ListItemText>
-                                </ListItem>
-                            </List>
-                            <List>
-                                <ListItem button key="RemySharp" divider>
-                                    <ListItemIcon>
-                                        <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Remy Sharp">Remy Sharp</ListItemText>
-                                    <ListItemText secondary="online" ></ListItemText>
-                                </ListItem>
-                                <ListItem button key="Alice" divider>
-                                    <ListItemIcon>
-                                        <Avatar alt="Alice" src="https://material-ui.com/static/images/avatar/3.jpg" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Alice">Alice</ListItemText>
-                                </ListItem>
-                                <ListItem button key="CindyBaker" divider>
-                                    <ListItemIcon>
-                                        <Avatar alt="Cindy Baker" src="https://material-ui.com/static/images/avatar/2.jpg" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Cindy Baker">Cindy Baker</ListItemText>
-                                </ListItem>
+                                {Messages?.map(message =>
+                                    <ListItem button key={message.id} divider onClick={() => fetchmessages(message.senderUsername)}>
+                                        <ListItemIcon>
+                                            <Avatar src={message.recipientPhotoUrl} />
+                                        </ListItemIcon>
+                                        <ListItemText >{message.senderUsername}</ListItemText>
+                                    </ListItem>
+                                )}
                             </List>
                         </Grid>
                         <Divider orientation="vertical" flexItem />
@@ -53,30 +46,9 @@ export default function Messages() {
                                 <ListItem key="1">
                                     <Grid container>
                                         <Grid item xs={12}>
-                                            <ListItemText primary="Hey man, What's up ?"></ListItemText>
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <ListItemText secondary="09:30"></ListItemText>
-                                        </Grid>
-                                    </Grid>
-                                </ListItem>
-                                <ListItem key="2">
-                                    <Grid container>
-                                        <Grid item xs={12}>
-                                            <ListItemText primary="Hey, Iam Good! What about you ?"></ListItemText>
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <ListItemText secondary="09:31"></ListItemText>
-                                        </Grid>
-                                    </Grid>
-                                </ListItem>
-                                <ListItem key="3">
-                                    <Grid container>
-                                        <Grid item xs={12}>
-                                            <ListItemText primary="Cool. i am good, let's catch up!"></ListItemText>
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <ListItemText secondary="10:30"></ListItemText>
+                                            {MessagesThread?.map(message =>
+                                                <ListItemText key={message.id} primary={message.content}></ListItemText>
+                                            )}
                                         </Grid>
                                     </Grid>
                                 </ListItem>

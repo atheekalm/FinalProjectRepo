@@ -10,7 +10,7 @@ export default function ServiceCardList({ serviceList }: Props) {
         <>
             <Grid container >
                 {serviceList.map(service => (
-                    <Grid item xs={3} key={service.id}>
+                    <Grid item key={service.id}>
                         <ServiceCard service={service} />
                     </Grid>
                 ))}

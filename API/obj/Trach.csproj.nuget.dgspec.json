@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\FinalProject\\API\\Trach\\Trach.csproj": {}
+    "F:\\FinalProjectRepo\\API\\Trach.csproj": {}
   },
   "projects": {
-    "F:\\FinalProject\\API\\Trach\\Trach.csproj": {
+    "F:\\FinalProjectRepo\\API\\Trach.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\FinalProject\\API\\Trach\\Trach.csproj",
+        "projectUniqueName": "F:\\FinalProjectRepo\\API\\Trach.csproj",
         "projectName": "Trach",
-        "projectPath": "F:\\FinalProject\\API\\Trach\\Trach.csproj",
+        "projectPath": "F:\\FinalProjectRepo\\API\\Trach.csproj",
         "packagesPath": "C:\\Users\\athee\\.nuget\\packages\\",
-        "outputPath": "F:\\FinalProject\\API\\Trach\\obj\\",
+        "outputPath": "F:\\FinalProjectRepo\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

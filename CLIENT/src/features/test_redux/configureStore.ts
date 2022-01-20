@@ -1,3 +1,4 @@
+import { messageSlice } from './../Chat/messageSlice';
 import { locationSlice, locationSlice_Cities } from './../Locations/locationSlice';
 import { serviceSlice } from './../Services/serviceSlice';
 import { accountSlice } from './../Account/accountSlice';
@@ -5,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { TypedUseSelectorHook, useDispatch } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit";
 import { counterslice } from "./counterSlice";
+import { messagethredSlice } from '../Chat/MessagesThread';
 
 
 
@@ -14,7 +16,9 @@ export const store = configureStore({
         account: accountSlice.reducer,
         services: serviceSlice.reducer,
         District: locationSlice.reducer,
-        City: locationSlice_Cities.reducer
+        City: locationSlice_Cities.reducer,
+        Messages: messageSlice.reducer,
+        MessageThread: messagethredSlice.reducer
     }
 })
 

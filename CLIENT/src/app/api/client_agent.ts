@@ -36,14 +36,14 @@ axios.interceptors.response.use(async responce => {
 });
 
 const requests = {
-    get: (url: string, params?: URLSearchParams) => axios.get(url,{params}).then(responcebody),
+    get: (url: string, params?: URLSearchParams) => axios.get(url, { params }).then(responcebody),
     post: (url: string, body: {}) => axios.post(url, body).then(responcebody),
     put: (url: string, body: {}) => axios.put(url, body).then(responcebody),
     delete: (url: string) => axios.post(url).then(responcebody)
 }
 
 const Appservice = {
-    services: (params:URLSearchParams) => requests.get('Service/Services',params),
+    services: (params: URLSearchParams) => requests.get('Service/Services', params),
     service: (id: number) => requests.get(`Service/${id}`)
 }
 
@@ -58,11 +58,17 @@ const Account = {
     register: (values: any) => requests.post('Auth/Register', values),
     currentUser: () => requests.get('Auth/currentUser'),
 }
+const Message = {
+    getallMessages: () => requests.get('Message'),
+    sendMessage: (values: any) => requests.post('Message', values),
+    getThread: (value: any) => requests.get(`Message/thread/${value}`)
+}
 
 const client_agent = {
     Appservice,
     Account,
-    Location
+    Location,
+    Message
 }
 
 export default client_agent;
