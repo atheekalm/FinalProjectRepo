@@ -1,18 +1,20 @@
 import { Button, Menu, Fade, MenuItem, Badge } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../test_redux/configureStore";
+import { useAppDispatch } from "../test_redux/configureStore";
 import MailIcon from '@mui/icons-material/Mail';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { LogOut } from "./accountSlice";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
 
+interface Props {
+    LoadExist: boolean
+}
 
-
-export default function Authenticated() {
+export default function Authenticated({ LoadExist }: Props) {
     const dispatch = useAppDispatch();
-    const { user } = useAppSelector(state => state.account);
+    // const { user } = useAppSelector(state => state.account);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: any) => {
@@ -24,9 +26,11 @@ export default function Authenticated() {
 
     return (
         <>
-            <Button color="inherit" component={NavLink} to={'/CreateProfile'} variant="outlined" startIcon={<AddCircleOutlineIcon />}>
-                Create Profile
-            </Button>
+            {LoadExist &&
+                <Button color="inherit" component={NavLink} to={'/CreateProfile'} variant="outlined" startIcon={<AddCircleOutlineIcon />}>
+                    Create Profile
+                </Button>
+            }
             <Badge color="error" badgeContent={4} showZero component={NavLink} to={'/Messages'} sx={{ margin: '1rem' }}>
                 <MailIcon sx={{ color: 'white', }} />
             </Badge>
@@ -35,7 +39,7 @@ export default function Authenticated() {
                 onClick={handleClick}
                 sx={{ typography: 'h6' }}
             >
-                <AccountCircle sx={{ color: 'white', }}/>
+                <AccountCircle sx={{ color: 'white', }} />
             </Button>
 
             {/* <IconButton

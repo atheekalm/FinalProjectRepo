@@ -7,6 +7,7 @@ import { TypedUseSelectorHook, useDispatch } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit";
 import { counterslice } from "./counterSlice";
 import { messagethredSlice } from '../Chat/MessagesThread';
+import { checkProfileExitSlice } from '../LoggedUser/loggeduserSlice';
 
 
 
@@ -18,7 +19,8 @@ export const store = configureStore({
         District: locationSlice.reducer,
         City: locationSlice_Cities.reducer,
         Messages: messageSlice.reducer,
-        MessageThread: messagethredSlice.reducer
+        MessageThread: messagethredSlice.reducer,
+        ProfieExit: checkProfileExitSlice.reducer
     }
 })
 
@@ -27,5 +29,3 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
-

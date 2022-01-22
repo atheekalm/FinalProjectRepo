@@ -1,17 +1,13 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { Button, Container, FormControl, IconButton, Input, InputLabel, MenuItem, Paper, Select, SelectChangeEvent, styled } from '@mui/material';
+import { Button, Container, FormControl, IconButton, InputLabel, MenuItem, Paper, Select, SelectChangeEvent, styled } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { useState } from 'react';
-import { DatePicker, DesktopDatePicker } from '@mui/lab';
 import { PhotoCamera } from '@mui/icons-material';
 
 export default function CreateProfile() {
-    const [value, setValue] = useState<Date | null>(null);
     const Input = styled('input')({
         display: 'none',
     });

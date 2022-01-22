@@ -60,7 +60,7 @@ function initialServiceParams() {
 export const serviceSlice = createSlice({
     name: 'Services',
     initialState: serviceAdapter.getInitialState<ServiceState>({
-        servicesLoaded: false,
+        servicesLoaded: false,   
         status: 'idle',
         UserServiceParams: initialServiceParams()
 
@@ -99,6 +99,7 @@ export const serviceSlice = createSlice({
         });
     })
 })
+
 
 
 export const serviceSelectors = serviceAdapter.getSelectors((state: RootState) => state.services);

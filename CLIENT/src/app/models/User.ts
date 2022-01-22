@@ -1,6 +1,8 @@
 export interface User {
+    id?: number,
     username: string,
-    token: string
+    token: string,
+    photoUlr: string
 }
 
 
@@ -14,6 +16,6 @@ export interface ServiceParams {
     OrderBy?: string
     TopRatedServices?: number
     Status?: string
-    PageNumber:number
+    PageNumber: number
     PageSize: number
 }

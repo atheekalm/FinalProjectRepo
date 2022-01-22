@@ -39,6 +39,7 @@ namespace API.DotNet_Identitty.Controllers
 
             return new AppuserReturnDto
             {
+                Id = user.Id,
                 Username = user.UserName,
                 Token = await _tokenService.CreateToken(user),
                 PhotoUlr = user.AppUserPhoto?.Url

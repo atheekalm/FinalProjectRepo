@@ -20,11 +20,11 @@ namespace API.Controllers
 
         }
 
-        [HttpGet("CheckProfileExist")]
+        [HttpGet("CheckProfileExist/{id}")]
         public async Task<ActionResult<bool>> Profile(int id)
         {
             var result = await _user.IfserviceExist(id);
-            return Ok(result);
+            return Ok(!result);
         }
     }
 }

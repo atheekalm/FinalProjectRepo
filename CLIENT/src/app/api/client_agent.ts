@@ -64,11 +64,16 @@ const Message = {
     getThread: (value: any) => requests.get(`Message/thread/${value}`)
 }
 
+const loggedUser = {
+    checkProfileExist:(id:any)=>requests.get(`LoggedUser/CheckProfileExist/${id}`)
+}
+
 const client_agent = {
     Appservice,
     Account,
     Location,
-    Message
+    Message,
+    loggedUser
 }
 
 export default client_agent;

@@ -1,7 +1,6 @@
-import { Button, Avatar, Grid, Typography, Container, Box, useTheme, useMediaQuery, CardMedia } from "@mui/material";
+import { Button, Avatar, Grid, Typography, Container, Box, useTheme, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Service } from "../../app/models/Service";
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 
 
@@ -18,6 +17,11 @@ export default function ServiceCard({ service }: Props) {
     const cardforSMscreen = (
         <>
 
+
+
+
+
+
             <Box
                 sx={{
                     display: 'flex',
@@ -28,7 +32,8 @@ export default function ServiceCard({ service }: Props) {
                     borderRadius: '12px',
                     boxShadow: 1,
                     fontWeight: 'bold',
-                    margin: '8px'
+                    margin: '8px',
+
                 }}
             >
                 <Box
@@ -40,7 +45,7 @@ export default function ServiceCard({ service }: Props) {
                     alt="The house from the offer."
                     src={service.photoUrl}
                 />
-                <Box sx={{mr:3}}/>
+                <Box sx={{ mr: 3 }} />
                 <Box
                     sx={{
                         display: 'flex',
@@ -72,7 +77,6 @@ export default function ServiceCard({ service }: Props) {
                             },
                         }}
                     >
-                        <ErrorOutlineIcon />
                         CONFIDENCE SCORE 85%
                     </Box>
                 </Box>
@@ -82,6 +86,7 @@ export default function ServiceCard({ service }: Props) {
 
     const cardforMDscreen = (
         <>
+
             <Container style={{ margin: '8px', borderRadius: '20px', display: 'inline-block', width: '250px', backgroundColor: '#dfe3eb' }}>
                 <Box
                     sx={{
@@ -92,11 +97,11 @@ export default function ServiceCard({ service }: Props) {
                     }}
                 >
                     <Avatar src={service.photoUrl} sx={{ width: 100, height: 100 }} />
-                    <Typography component="h1" variant="subtitle2" style={{ fontWeight: 'bold', fontSize: '17px' }}>
-                        { }
+                    <Typography component="h1" variant="body2" style={{ padding: 0, marginTop: '5px' }}>
+                        {service.firstName} {service.lasttName}
                     </Typography>
-                    <Typography component="h1" variant="caption" style={{ marginBottom: 5, padding: 0 }}>
-                        Software Engineer
+                    <Typography component="h1" variant="body2" style={{ padding: 0 }}>
+                        {service.district} / {service.city}
                     </Typography>
                     <Grid item={true} container style={{ marginBottom: '1rem', padding: 0 }} >
                         <Grid item xs textAlign={'center'}>

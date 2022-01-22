@@ -6,12 +6,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Authenticated from '../../features/Account/Authenticated';
 import { useAppDispatch, useAppSelector } from '../../features/test_redux/configureStore';
-import { Badge, Button, Container, useMediaQuery, useTheme } from '@mui/material';
+import { Button, useMediaQuery, useTheme } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import MailIcon from '@mui/icons-material/Mail';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { getallMessages } from '../../features/Chat/messageSlice';
 import { useEffect } from 'react';
+import { ProfileExits } from '../../features/LoggedUser/loggeduserSlice';
 
 
 
@@ -20,13 +19,15 @@ import { useEffect } from 'react';
 export default function Navbar() {
   const theme = useTheme();
   const screenIconMatches = useMediaQuery(theme.breakpoints.down('md'));
-  const screenNavListMatches = useMediaQuery(theme.breakpoints.down('sm'));
-
+  // const screenNavListMatches = useMediaQuery(theme.breakpoints.down('sm'));
   const { user } = useAppSelector(state => state.account);
   const dispatch = useAppDispatch();
+  const { LoadExist } = useAppSelector(state => state.ProfieExit);
 
   useEffect(() => {
-    if (user?.username != null) dispatch(getallMessages())
+    if (user?.username != null) dispatch(getallMessages());
+    dispatch(ProfileExits(1))
+
   }, [dispatch, user])
 
 
@@ -53,7 +54,7 @@ export default function Navbar() {
           <Typography variant="h6" component={NavLink} to={'/'} sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          {user ? (<Authenticated />
+          {user ? (<Authenticated LoadExist={LoadExist}/>
           ) : (
             <>
               <Button color="inherit" component={NavLink} to={'/Register'}>Register</Button>
