@@ -7,8 +7,8 @@ import {
 } from "@mui/material";
 import StarRateIcon from '@mui/icons-material/StarRate';
 import Services from "../Services/Services";
-import LocationsDetails from "../Services/LocationsDetails";
-import CategoryDetails from "../Services/CategoryDetails";
+import LocationsDetails from "../Locations/LocationsDetails";
+import CategoryDetails from "../Category/CategoryDetails";
 import SearchService from "./SearchService";
 
 
@@ -53,21 +53,10 @@ export default function Content() {
                             defaultValue="female"
                             name="radio-buttons-group"
                         >
+                            <FormControlLabel value="All" control={<Radio />} label="All" />
                             <FormControlLabel value="female" control={<Radio />} label="Female" />
                             <FormControlLabel value="male" control={<Radio />} label="Male" />
-                        </RadioGroup>
-                    </FormControl>
-                </Paper>
-                <Paper sx={{ mb: 2, p: 2 }}>
-                    <FormControl component="fieldset">
-                        <FormLabel component="legend">Gender</FormLabel>
-                        <RadioGroup
-                            aria-label="gender"
-                            defaultValue="female"
-                            name="radio-buttons-group"
-                        >
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
+                            <FormControlLabel value="SMEs" control={<Radio />} label="SMEs" />
                         </RadioGroup>
                     </FormControl>
                 </Paper>

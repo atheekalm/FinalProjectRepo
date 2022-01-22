@@ -1,4 +1,4 @@
-import { Avatar, Button, Container, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
+import { Avatar, Box, Button, Chip, Container, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../test_redux/configureStore";
@@ -23,8 +23,8 @@ export default function ServiceCardDetails() {
   return (
     <>
       <Container>
-        <Grid container sx={{ marginTop: 2 }}>
-          <Grid item xs={6} md={3}>
+        <Grid container item sx={{ marginTop: 2 }}>
+          <Grid item >
             <Avatar
               alt={service?.lasttName}
               src={service?.photoUrl}
@@ -33,8 +33,9 @@ export default function ServiceCardDetails() {
               }}
               variant="rounded"
             />
+            <Box sx={{ mr: '5rem' }} />
           </Grid>
-          <Grid item xs={6} md={5} >
+          <Grid item >
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
               <ListItem>
 
@@ -44,33 +45,17 @@ export default function ServiceCardDetails() {
                 <ListItemText primary='SubCategory' />
               </ListItem>
               <Grid>
-                <Grid sx={{ display: "inline-block" }}>
-                  <ListItem sx={{ p: 0 }}>
-                      <ListItemText secondary="July 20, 2014" />
-                  </ListItem>
-                </Grid>
-                <Grid sx={{ display: "inline-block" }}>
-                  <ListItem sx={{ p: 0 }}>
-                      <ListItemText secondary="July 20, 2014" />
-                  </ListItem>
-                </Grid>
-                <Grid sx={{ display: "inline-block", m: 0, p: 0 }}>
-                  <ListItem sx={{ p: 0 }}>
-                      <ListItemText secondary="July 20, 2014" />
-                  </ListItem>
-                </Grid>
-                <Grid sx={{ display: "inline-block" }}>
-                  <ListItem sx={{ p: 0 }}>
-                      <ListItemText secondary="July 20, 2014" />
-                  </ListItem>
-                </Grid>
+                <Chip sx={{ margin: '0.1rem' }} label="Chip Outlined" variant="outlined" />
+                <Chip sx={{ margin: '0.1rem' }} label="Chip Outlined" variant="outlined" />
+                <Chip sx={{ margin: '0.1rem' }} label="Chip Outlined" variant="outlined" />
+                <Chip sx={{ margin: '0.1rem' }} label="Chip Outlined" variant="outlined" />
               </Grid>
-            </List>
+            </List>``
           </Grid>
-          <Grid item xs={6} md={2}>
+          <Grid item >
             <Button variant="contained">Request </Button>
           </Grid>
-          <Grid item xs={6} md={2}>
+          <Grid item >
             <IconButton >
               <FavoriteBorderIcon />
             </IconButton>
@@ -81,7 +66,7 @@ export default function ServiceCardDetails() {
         </Grid>
 
         <Grid container sx={{ marginTop: 2 }}>
-          <Grid item xs={6} md={3}>
+          <Grid item >
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
               <ListItem sx={{ p: 0 }}>
                 <ListItemButton >
@@ -109,32 +94,32 @@ export default function ServiceCardDetails() {
               </ListItem>
             </List>
           </Grid>
-          <Grid item xs={6} md={6} >
+          <Grid item  >
             <Typography variant="h5" gutterBottom component="div">
               about
             </Typography>
             <Typography variant="body2" gutterBottom component="div">
-            {service?.about}
+              {service?.about}
             </Typography>
           </Grid>
-          <Grid item xs={6} md={3}>
+          <Grid item >
             <Typography variant="h6" gutterBottom component="div">
               skills
             </Typography>
             <Typography variant="body2" gutterBottom component="div">
-            {service?.skills}
+              {service?.skills}
             </Typography>
           </Grid>
         </Grid>
 
 
         <Grid container sx={{ marginTop: 2 }}>
-          <Grid item xs={6} md={6} >
+          <Grid item >
             <Typography variant="h6" gutterBottom component="div">
               languages
             </Typography>
           </Grid>
-          <Grid item xs={6} md={6}>
+          <Grid item >
             <Typography variant="h6" gutterBottom component="div">
               workSummery
             </Typography>

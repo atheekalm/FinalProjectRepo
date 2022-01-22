@@ -1,17 +1,14 @@
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import { Collapse, Grid, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useState, useEffect } from 'react';
-import { FetchAllCities, fetchDistrict, locationCitySelectors, locationSelectors } from '../Locations/locationSlice';
+import { FetchAllCities, fetchDistrict, locationCitySelectors, locationSelectors } from './locationSlice';
 import { useAppDispatch, useAppSelector } from '../test_redux/configureStore';
 import { City } from '../../app/models/Location';
-import { setServiceParams } from './serviceSlice';
+import { setServiceParams } from '../Services/serviceSlice';
 
 
 
@@ -30,29 +27,6 @@ export interface DialogTitleProps {
   onClose: () => void;
 }
 
-const BootstrapDialogTitle = (props: DialogTitleProps) => {
-  const { children, onClose, ...other } = props;
-
-  return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-      {children}
-      {onClose ? (
-        <IconButton
-          aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </DialogTitle>
-  );
-};
 
 export default function LocationsDetails() {
   const districts = useAppSelector(locationSelectors.selectAll);
@@ -103,14 +77,13 @@ export default function LocationsDetails() {
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Locations
-        </BootstrapDialogTitle>
-        <DialogContent dividers>
-          <Grid container spacing={2} item={true}>
+        
+        <DialogContent dividers sx={{width:'450px'}}>
+          <Grid container spacing={2} item>
 
-            <Grid item={true}>
+            <Grid item>
               <List
                 component="nav"
                 aria-labelledby="nested-list-subheader"

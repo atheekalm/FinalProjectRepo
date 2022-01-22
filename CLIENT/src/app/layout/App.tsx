@@ -8,7 +8,7 @@ import { useAppDispatch } from "../../features/test_redux/configureStore";
 import { useEffect } from "react";
 import { fetchCurrentUser } from "../../features/Account/accountSlice";
 import ServiceCardDetails from "../../features/Services/ServiceCardDetails";
-import CreateProfile from "../../features/Services/CreateProfile";
+import CreateProfile from "../../features/LoggedUser/CreateProfile";
 import Messages from "../../features/Chat/Messsages";
 
 
