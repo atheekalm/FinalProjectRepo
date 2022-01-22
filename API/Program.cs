@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Trach.Data;
-using Trach.Entities;
+using API.Data;
+using API.Entities;
 
 namespace Trach
 {

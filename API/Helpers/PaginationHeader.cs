@@ -1,4 +1,4 @@
-namespace Trach.Helpers
+namespace API.Helpers
 {
     public class PaginationHeader
     {

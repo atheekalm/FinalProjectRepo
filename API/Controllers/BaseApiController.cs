@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Trach.Helpers;
+using API.Helpers;
 
-namespace Trach.Controllers
+namespace API.Controllers
 {
     [ServiceFilter(typeof(UserActivities))]
     [ApiController]

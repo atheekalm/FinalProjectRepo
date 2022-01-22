@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
-using Trach.Extension;
+using API.Extension;
 
-namespace Trach.SgnalR
+namespace API.SgnalR
 {
     [Authorize]
     public class PresenceHub : Hub

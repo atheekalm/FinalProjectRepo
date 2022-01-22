@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using Trach.Data;
-using Trach.DTO;
-using Trach.Entities;
-using Trach.Helpers;
-using Trach.Repository.IRepository;
+using API.Data;
+using API.DTO;
+using API.Entities;
+using API.Helpers;
+using API.Repository.IRepository;
 
-namespace Trach.Repository
+namespace API.Repository
 {
     public class MessageService : IMessage
     {

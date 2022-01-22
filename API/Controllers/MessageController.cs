@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Trach.DTO;
-using Trach.Entities;
-using Trach.Extension;
-using Trach.Helpers;
-using Trach.Repository.IRepository;
+using API.DTO;
+using API.Entities;
+using API.Extension;
+using API.Helpers;
+using API.Repository.IRepository;
 
-namespace Trach.Controllers
+namespace API.Controllers
 {
     [Authorize]
     public class MessageController : BaseApiController

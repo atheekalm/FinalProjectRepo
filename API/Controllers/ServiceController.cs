@@ -5,15 +5,15 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Trach.Data;
-using Trach.DTO;
-using Trach.Entities;
-using Trach.Extension;
-using Trach.Helpers;
-using Trach.Repository.IRepository;
+using API.Data;
+using API.DTO;
+using API.Entities;
+using API.Extension;
+using API.Helpers;
+using API.Repository.IRepository;
 
 
-namespace Trach.Controllers
+namespace API.Controllers
 {
     [Authorize]
     public class ServiceController : BaseApiController
@@ -52,32 +52,7 @@ namespace Trach.Controllers
             Response.AddPaginationHeader(services.CurrentPage, services.PageSize, services.TotalCount, services.TotalPages);
             return Ok(services);
         }
-        [AllowAnonymous]
-        [HttpGet("Districts")]
-        public async Task<ActionResult<IEnumerable<DistrictDto>>> ListAllDistricts()
-        {
-            var Districts = await _ServiceProvider.ListAllDistricts();
-            var result = _mapper.Map<IEnumerable<DistrictDto>>(Districts);
-            return Ok(result);
-        }
-        [AllowAnonymous]
-        [HttpGet("Cities")]
-        public async Task<ActionResult<IEnumerable<CityDto>>> ListAllCities()
-        {
-            var Cities = await _ServiceProvider.ListAllCities();
-            var result = _mapper.Map<IEnumerable<CityDto>>(Cities);
-            return Ok(result);
-        }
-        [AllowAnonymous]
-        [HttpGet("District/{id}")]
-        public async Task<ActionResult<IEnumerable<CityDto>>> ListAllCitiesById(int id)
-        {
-            var Cities = await _ServiceProvider.ListAllCitiesByDistrict(id);
-            var result = _mapper.Map<IEnumerable<CityDto>>(Cities);
-            return Ok(result);
-        }
-        // [HttpPost("createservice")]
-        // public async Task 
+         
         [HttpPut]
         public async Task<ActionResult> UpdateService(ServiceUpdateDto serviceUpdateDto)
         {

@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Trach.Controllers;
-using Trach.DTO;
-using Trach.Entities;
-using Trach.IRepository;
+using API.Controllers;
+using API.DTO;
+using API.Entities;
+using API.IRepository;
 
-namespace DotNet_Identitty.Controllers
+namespace API.DotNet_Identitty.Controllers
 {
     public class AuthController : BaseApiController
     {

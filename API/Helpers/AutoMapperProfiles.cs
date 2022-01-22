@@ -1,13 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Trach.Data;
-using Trach.DTO;
-using Trach.Entities;
-using Trach.Extension;
-using Trach.Repository.IRepository;
+using API.Data;
+using API.DTO;
+using API.Entities;
+using API.Extension;
+using API.Repository.IRepository;
 
-namespace Trach.Helpers
+namespace API.Helpers
 {
     public class AutoMapperProfiles : Profile
     {

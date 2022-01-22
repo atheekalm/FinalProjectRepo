@@ -48,9 +48,9 @@ const Appservice = {
 }
 
 const Location = {
-    Distict: () => requests.get('Service/Districts'),
-    Cities: () => requests.get('Service/Cities'),
-    City: (id: number) => requests.get(`Service/District/${id}`)
+    Distict: () => requests.get('Location/Districts'),
+    Cities: () => requests.get('Location/Cities'),
+    City: (id: number) => requests.get(`Location/District/${id}`)
 }
 
 const Account = {

@@ -1,10 +1,11 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Trach.Data;
-using Trach.Entities;
-using Trach.Repository.IRepository;
+using API.Data;
+using API.Entities;
+using API.Repository.IRepository;
+using System.Linq;
 
-namespace Trach.Repository
+namespace API.Repository
 {
     public class AppuserService : IloggedappUser
     {
@@ -22,6 +23,10 @@ namespace Trach.Repository
         public async Task<AppUser> GetAppUserByIdAsync(int Id)
         {
             return await _context.AppUsers.FirstOrDefaultAsync(u => u.Id == Id);
+        }
+        public async Task<bool> IfserviceExist(int Userid)
+        {
+            return await _context.ServiceProviders.Where(x => x.AppUserId == Userid).AnyAsync();
         }
     }
 }

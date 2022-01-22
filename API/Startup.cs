@@ -11,13 +11,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Trach.Data;
-using Trach.Entities;
-using Trach.Helpers;
-using Trach.IRepository;
-using Trach.Repository;
-using Trach.Repository.IRepository;
-using Trach.SgnalR;
+using API.Data;
+using API.Entities;
+using API.Helpers;
+using API.IRepository;
+using API.Repository;
+using API.Repository.IRepository;
+using API.SgnalR;
 
 namespace Trach
 {
@@ -71,6 +71,7 @@ namespace Trach
             services.Configure<CloudinarySettings>(_config.GetSection("CloudinarySettings"));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhoto, PhotoServices>();
+            services.AddScoped<Ilocation,LocationService>();
             services.AddScoped<IMessage, MessageService>();
             services.AddScoped<UserActivities>();
             services.AddScoped<IProvider, SProvider>();

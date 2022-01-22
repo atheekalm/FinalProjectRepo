@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using Trach.Entities;
+using API.Entities;
 
-namespace Trach.IRepository
+namespace API.IRepository
 {
     public interface ITokenService
     {

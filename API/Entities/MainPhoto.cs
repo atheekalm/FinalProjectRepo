@@ -1,4 +1,4 @@
-namespace Trach.Entities
+namespace API.Entities
 {
     public class MainPhoto
     {

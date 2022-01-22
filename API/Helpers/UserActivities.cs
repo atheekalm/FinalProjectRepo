@@ -2,10 +2,10 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
-using Trach.Extension;
-using Trach.Repository.IRepository;
+using API.Extension;
+using API.Repository.IRepository;
 
-namespace Trach.Helpers
+namespace API.Helpers
 {
     public class UserActivities : IAsyncActionFilter
     {

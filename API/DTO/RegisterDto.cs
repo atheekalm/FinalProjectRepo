@@ -1,4 +1,4 @@
-namespace Trach.DTO
+namespace API.DTO
 {
     public class RegisterDto
     {

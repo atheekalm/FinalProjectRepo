@@ -2,16 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Trach.DTO;
-using Trach.Entities;
-using Trach.Helpers;
+using API.DTO;
+using API.Entities;
+using API.Helpers;
 
-namespace Trach.Repository.IRepository
+namespace API.Repository.IRepository
 {
     public interface IProvider
     {
         Task<ServiceProvider> GetServiceProviderByIdAsync(int Id);
-        Task<bool> IfserviceExist(int id);
         Task<ServiceProvider> IfserviceExistReturnUser(int id);
         Task<ServiceProvider> GetServiceProviderByUsernameAsync(string username);
         Task<IEnumerable<ServiceProvider>> GetServiceProvidersAsync();
@@ -21,8 +20,5 @@ namespace Trach.Repository.IRepository
         Task<ServiceProviderDto> GetSProviderAsync(string username);
         Task<PageList<ServiceProviderDto>> GetSProvidersAsync(UserParams userParams);
         void RemoveProfile(ServiceProvider ServiceProvider);
-        Task<IEnumerable<District>> ListAllDistricts();
-        Task<IEnumerable<City>> ListAllCitiesByDistrict(int districtId);
-        Task<IEnumerable<City>> ListAllCities();
     }
 }

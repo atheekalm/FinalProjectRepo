@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using Trach.Data;
-using Trach.DTO;
-using Trach.Entities;
-using Trach.Extension;
-using Trach.Helpers;
-using Trach.Repository.IRepository;
+using API.Data;
+using API.DTO;
+using API.Entities;
+using API.Extension;
+using API.Helpers;
+using API.Repository.IRepository;
 
-namespace Trach.Repository
+namespace API.Repository
 {
     public class SProvider : IProvider
     {
@@ -78,10 +78,6 @@ namespace Trach.Repository
                                 userParams.PageNumber, userParams.PageSize);
         }
 
-        public async Task<bool> IfserviceExist(int Userid)
-        {
-            return await _context.ServiceProviders.Where(x => x.Id == Userid).AnyAsync();
-        }
 
         public async Task<ServiceProvider> IfserviceExistReturnUser(int Userid)
         {
@@ -89,23 +85,7 @@ namespace Trach.Repository
         }
 
 
-        public async Task<IEnumerable<City>> ListAllCities()
-        {
-            return await _context.Cities
-            .Include(x => x.District)
-            .ToListAsync();
-        }
-
-        public async Task<IEnumerable<City>> ListAllCitiesByDistrict(int districtId)
-        {
-            return await _context.Cities.Where(x => x.DistrictId == districtId).ToListAsync();
-        }
-
-        public async Task<IEnumerable<District>> ListAllDistricts()
-        {
-            return await _context.Districts.ToListAsync();
-        }
-
+        
         public void RemoveProfile(ServiceProvider ServiceProvider)
         {
             _context.ServiceProviders.Remove(ServiceProvider);

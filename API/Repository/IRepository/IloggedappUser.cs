@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Trach.Entities;
+using API.Entities;
 
-namespace Trach.Repository.IRepository
+namespace API.Repository.IRepository
 {
     public interface IloggedappUser
     {
         Task<AppUser> GetAppUserByUserName(string username);
         Task<AppUser> GetAppUserByIdAsync(int Id);
+        Task<bool> IfserviceExist(int id);
+
     }
 }

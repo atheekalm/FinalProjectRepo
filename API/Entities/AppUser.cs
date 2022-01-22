@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace Trach.Entities
+namespace API.Entities
 {
     public class AppUser : IdentityUser<int>
     {

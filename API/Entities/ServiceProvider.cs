@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Trach.Helpers;
+using API.Helpers;
 
-namespace Trach.Entities
+namespace API.Entities
 {
     public class ServiceProvider
     {

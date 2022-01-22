@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Trach.Entities;
-using Trach.Helpers;
+using API.Entities;
+using API.Helpers;
 
-namespace Trach.Extension
+namespace API.Extension
 {
     public static class ServiceFilterExtensions
     {

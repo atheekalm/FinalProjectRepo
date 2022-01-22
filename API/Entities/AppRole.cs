@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
-namespace Trach.Entities
+namespace API.Entities
 {
     public class AppRole : IdentityRole<int>
     {

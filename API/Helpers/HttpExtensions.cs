@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace Trach.Helpers
+namespace API.Helpers
 {
     public static class HttpExtensions
     {

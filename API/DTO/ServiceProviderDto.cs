@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Trach.DTO
+namespace API.DTO
 {
     public class ServiceProviderDto
     {

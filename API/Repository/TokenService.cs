@@ -5,13 +5,13 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Trach.IRepository;
+using API.IRepository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Trach.Entities;
+using API.Entities;
 
-namespace Trach.Repository
+namespace API.Repository
 {
     public class TokenService : ITokenService
     {

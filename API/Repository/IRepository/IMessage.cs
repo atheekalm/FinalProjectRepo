@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Trach.DTO;
-using Trach.Entities;
-using Trach.Helpers;
+using API.DTO;
+using API.Entities;
+using API.Helpers;
 
-namespace Trach.Repository.IRepository
+namespace API.Repository.IRepository
 {
     public interface IMessage
     {

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace Trach.Entities
+namespace API.Entities
 {
     public class Category
     {

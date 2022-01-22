@@ -5,9 +5,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Trach.Entities;
+using API.Entities;
 
-namespace Trach.Data
+namespace API.Data
 {
     public class Seed
     {

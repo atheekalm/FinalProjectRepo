@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace Trach.Helpers
+namespace API.Helpers
 {
     public class PageList<T> : List<T>
     {

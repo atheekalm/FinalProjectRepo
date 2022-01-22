@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Trach.Entities
+namespace API.Entities
 {
     public class District
     {

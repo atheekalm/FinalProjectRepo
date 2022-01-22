@@ -4,10 +4,10 @@ using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Trach.Helpers;
-using Trach.Repository.IRepository;
+using API.Helpers;
+using API.Repository.IRepository;
 
-namespace Trach.Repository
+namespace API.Repository
 {
     public class PhotoServices : IPhoto
     {
