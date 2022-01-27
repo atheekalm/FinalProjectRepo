@@ -7,12 +7,15 @@ import { toast } from 'react-toastify';
 
 
 interface AccountState {
-    user: User | null
+    id: number,
+    user: User | null,
+
 }
 
 
 const initialState: AccountState = {
-    user: null
+    user: null,
+    id: 0
 }
 
 export const signInUser = createAsyncThunk<User, FieldValues>(
@@ -68,8 +71,12 @@ export const accountSlice = createSlice({
             toast.error('Session expired - please login again');
             history.push('/');
         });
+        builder.addCase(fetchCurrentUser.fulfilled,(state,action)=>{
+            state.id = action.payload.id;
+        })
         builder.addMatcher(isAnyOf(signInUser.fulfilled, fetchCurrentUser.fulfilled), (state, action) => {
             state.user = action.payload;
+            state.id = action.payload.id;
         });
         builder.addMatcher(isAnyOf(signInUser.rejected), (state, action) => {
             throw action.payload;

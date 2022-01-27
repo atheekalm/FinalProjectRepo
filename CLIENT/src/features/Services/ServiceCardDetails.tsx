@@ -1,20 +1,68 @@
-import { Avatar, Box, Button, Chip, Container, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Rating, Tab, Tabs, Typography } from "@mui/material";
+import { Avatar, Box, Button, Container, Divider, Fab, Grid, List, ListItem, ListItemText, Paper, Rating, Tab, Tabs, TextField, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../test_redux/configureStore";
 import { fetchServiceAsync, serviceSelectors } from "./serviceSlice";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import CallEndIcon from '@mui/icons-material/CallEnd';
+import SendIcon from '@mui/icons-material/Send';
+
+
+
+import MobileStepper from '@mui/material/MobileStepper';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+
+
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
+
+
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+
+
+
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+
+
 
 export default function ServiceCardDetails() {
   const { id } = useParams<{ id: string }>();
   const service = useAppSelector(state => serviceSelectors.selectById(state, id))
   const dispatch = useAppDispatch();
-
-
 
   useEffect(() => {
     if (!service) dispatch(fetchServiceAsync(parseInt(id)))
@@ -23,12 +71,56 @@ export default function ServiceCardDetails() {
 
 
 
-  const [value, setValue] = useState('one');
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+
+  const images = [
+    {
+      label: 'San Francisco – Oakland Bay Bridge, United States',
+      imgPath:
+        'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+    },
+    {
+      label: 'Bird',
+      imgPath:
+        'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+    },
+    {
+      label: 'Bali, Indonesia',
+      imgPath:
+        'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
+    },
+    {
+      label: 'Goč, Serbia',
+      imgPath:
+        'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+    },
+  ];
+
+
+
+  const [activeStep, setActiveStep] = useState(0);
+  const maxSteps = images.length;
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleStepChange = (step: number) => {
+    setActiveStep(step);
+  };
+
+  const theme = useTheme();
+  const [ratingvalue, ratingsetValue] = useState<number | null>(2);
+
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  }
 
   return (
     <>
@@ -48,6 +140,9 @@ export default function ServiceCardDetails() {
               }}
             >
               <Avatar src={service?.photoUrl} sx={{ width: 200, height: 200 }} />
+              <Typography component="h1" variant="subtitle1" style={{ padding: 0 }}>
+                <Rating name="read-only" style={{ padding: 0, margin: 0 }} value={ratingvalue} readOnly />
+              </Typography>
               <Typography component="h1" variant="h5" style={{ padding: 0 }}>
                 {service?.firstName} {service?.lasttName}
               </Typography>
@@ -73,7 +168,7 @@ export default function ServiceCardDetails() {
                     flexDirection: 'column',
                     alignItems: 'center',
                   }}>
-                    hello world
+                    <Rating name="read-only" value={ratingvalue} readOnly />
                   </Box>
                 </Grid>
                 <Grid xs={4} >
@@ -86,23 +181,192 @@ export default function ServiceCardDetails() {
                   </Box>
                 </Grid>
               </Grid>
+              <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}>
+                <Button variant="outlined" sx={{ width: '400px' }}>Send Invitation</Button>
+              </Box>
             </Box>
           </Grid>
           <Grid xs={6} md={8}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <Container>
-              <Box sx={{ width: '100%' }}>
-                <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  textColor="secondary"
-                  indicatorColor="secondary"
-                  aria-label="secondary tabs example"
-                >
-                  <Tab value="one" label="Item One" ></Tab>
-                  <Tab value="two" label="Item Two" />
-                  <Tab value="three" label="Item Three" />
+
+              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered variant="fullWidth">
+                  <Tab label="Profile" {...a11yProps(0)} />
+                  <Tab label="Photos" {...a11yProps(1)} />
+                  <Tab label="Messages" {...a11yProps(2)} />
                 </Tabs>
               </Box>
+              <TabPanel value={value} index={0}>
+                <Container>
+                  <Box component={Paper} >
+                    <Typography sx={{ margin: 4 }}>
+                      <Typography variant="h5">about</Typography>
+                      {service?.about}
+                    </Typography>
+                  </Box>
+                  <Box component={Paper}>
+                    <Typography sx={{ margin: 4 }}>
+                      <Typography variant="h5">skills</Typography>
+                      {service?.skills}
+                    </Typography>
+                  </Box>
+                  <Box component={Paper}>
+                    <Typography sx={{ margin: 4 }}>
+                      <Typography variant="h5">education</Typography>
+                      {service?.education}
+                    </Typography>
+                  </Box>
+                  <Box component={Paper}>
+                    <Typography sx={{ margin: 4 }}>
+                      <Typography variant="h5">workSummery</Typography>
+                      {service?.workSummery}
+                    </Typography>
+                  </Box>
+                </Container>
+              </TabPanel>
+              <TabPanel value={value} index={1}>
+                <Box sx={{ maxWidth: 620, flexGrow: 1, margin: 3 }}>
+                  <AutoPlaySwipeableViews
+                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                    index={activeStep}
+                    onChangeIndex={handleStepChange}
+                    enableMouseEvents
+                  >
+                    {images.map((step, index) => (
+                      <div key={step.label}>
+                        {Math.abs(activeStep - index) <= 2 ? (
+                          <Box
+                            component="img"
+                            sx={{
+                              height: 325,
+                              display: 'block',
+                              maxWidth: 620,
+                              overflow: 'hidden',
+                              width: '100%',
+                            }}
+                            src={step.imgPath}
+                            alt={step.label}
+                          />
+                        ) : null}
+                      </div>
+                    ))}
+                  </AutoPlaySwipeableViews>
+                  <MobileStepper
+                    steps={maxSteps}
+                    position="static"
+                    activeStep={activeStep}
+                    nextButton={
+                      <Button
+                        size="small"
+                        onClick={handleNext}
+                        disabled={activeStep === maxSteps - 1}
+                      >
+                        Next
+                        {theme.direction === 'rtl' ? (
+                          <KeyboardArrowLeft />
+                        ) : (
+                          <KeyboardArrowRight />
+                        )}
+                      </Button>
+                    }
+                    backButton={
+                      <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                        {theme.direction === 'rtl' ? (
+                          <KeyboardArrowRight />
+                        ) : (
+                          <KeyboardArrowLeft />
+                        )}
+                        Back
+                      </Button>
+                    }
+                  />
+                </Box>
+
+
+              </TabPanel>
+              <TabPanel value={value} index={2}>
+
+
+
+
+
+
+                <Box
+                  sx={{
+                    marginTop: 4,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Container>
+                    <Grid item >
+                      <List >
+                        <ListItem key="1">
+                          <Grid container>
+                            <Grid item >
+                              
+                            </Grid>
+                          </Grid>
+                        </ListItem>
+                      </List>
+                      <Divider />
+
+                      <Grid container style={{ padding: '20px' }}>
+                        <Grid item xs={11}>
+                          <TextField id="outlined-basic-email" label="Type Something" fullWidth />
+                        </Grid>
+                        <Grid xs={1} >
+                          <Fab color="primary" aria-label="add"><SendIcon /></Fab>
+                        </Grid>
+                      </Grid>
+
+
+
+
+
+
+                    </Grid>
+                  </Container>
+                  </Box>
+
+
+
+
+              </TabPanel>
+
             </Container>
           </Grid>
         </Grid>

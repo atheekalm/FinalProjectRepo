@@ -10,11 +10,13 @@ namespace API.Data
         IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
-        public DbSet<ServiceProvider> ServiceProviders { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<ServiceProvider> ServiceProviders { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Invitation> Invitations { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -24,18 +26,6 @@ namespace API.Data
                 .HasOne(s => s.ServiceProvider)
                 .WithOne(sr => sr.AppUser)
                 .HasForeignKey<ServiceProvider>(s => s.AppUserId)
-                .IsRequired();
-
-            builder.Entity<ServiceProvider>()
-                .HasOne(s => s.City)
-                .WithOne(sr => sr.ServiceProvider)
-                .HasForeignKey<ServiceProvider>(s => s.CityId)
-                .IsRequired();
-
-            builder.Entity<ServiceProvider>()
-                .HasOne(s => s.District)
-                .WithOne(sr => sr.ServiceProvider)
-                .HasForeignKey<ServiceProvider>(s => s.DistrictId)
                 .IsRequired();
 
             builder.Entity<District>()
@@ -49,6 +39,9 @@ namespace API.Data
                 .WithOne(u => u.User)
                 .HasForeignKey(ur => ur.UserId)
                 .IsRequired();
+
+
+
 
             builder.Entity<AppRole>()
                 .HasMany(ur => ur.UserRole)
@@ -65,6 +58,21 @@ namespace API.Data
                 .HasOne(u => u.Sender)
                 .WithMany(m => m.MessagesSend)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Invitation>()
+                .HasOne(p => p.Recipient)
+                .WithMany(u => u.InvitationSender)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Invitation>()
+                .HasOne(p => p.Sender)
+                .WithMany(u => u.InvitationReciver)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+
+
+
 
         }
 

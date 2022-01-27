@@ -6,6 +6,9 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { useState } from 'react';
 import { PhotoCamera } from '@mui/icons-material';
+import { useAppSelector } from '../test_redux/configureStore';
+import Home from '../Dashbord/Home';
+import { Redirect } from 'react-router';
 
 export default function CreateProfile() {
     const Input = styled('input')({
@@ -16,6 +19,11 @@ export default function CreateProfile() {
     const handleChange = (event: SelectChangeEvent) => {
         setAge(event.target.value);
     };
+    const { LoadExist } = useAppSelector(state => state.ProfieExit);
+
+    if (!LoadExist) return <Redirect to="/" />
+
+
     return (
         <>
             <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>

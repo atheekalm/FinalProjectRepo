@@ -10,6 +10,7 @@ import { fetchCurrentUser } from "../../features/Account/accountSlice";
 import ServiceCardDetails from "../../features/Services/ServiceCardDetails";
 import CreateProfile from "../../features/LoggedUser/CreateProfile";
 import Messages from "../../features/Chat/Messsages";
+import EditProfile from "../../features/LoggedUser/EditProfile";
 
 
 
@@ -27,7 +28,7 @@ export default function App() {
       <Route exact path='/Services' component={Home} />
       <Route exact path='/Login' component={Login} />
       <Route exact path='/Register' component={Register} />
-      <Route exact path='/EditProfile' component={Home} />
+      <Route exact path='/EditProfile' component={EditProfile} />
       <Route exact path='/Service/:id' component={ServiceCardDetails} />
       <Route exact path='/CreateProfile' component={CreateProfile} />
       <Route exact path='/Messages' component={Messages} />

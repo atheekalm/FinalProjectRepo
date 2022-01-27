@@ -1,6 +1,33 @@
+import { User } from './../../app/models/User';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import client_agent from '../../app/api/client_agent';
 
+
+
+interface LoggedUser {
+    user: User | null,
+    status: string,
+    LoadExist: boolean
+
+}
+
+const initialState: LoggedUser = {
+    user: null,
+    status: 'idle',
+    LoadExist: false
+}
+
+
+export const GetUserProfile = createAsyncThunk<User, number>(
+    'users/ProfileExit',
+    async (userId, thunkAPI) => {
+        try {
+            return await client_agent.loggedUser.checkProfileExist(userId);
+        } catch (error: any) {
+            return thunkAPI.rejectWithValue({ error: error.data })
+        }
+    }
+)
 
 
 export const ProfileExits = createAsyncThunk<boolean, number>(
@@ -13,12 +40,6 @@ export const ProfileExits = createAsyncThunk<boolean, number>(
         }
     }
 )
-
-const initialState = {
-    status: 'idle',
-    LoadExist: false
-}
-
 
 export const checkProfileExitSlice = createSlice({
     name: 'ProfileExit',

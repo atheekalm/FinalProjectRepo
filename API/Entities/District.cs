@@ -9,7 +9,6 @@ namespace API.Entities
         public int Id { get; set; }
         public string DistrictName { get; set; }
         public ICollection<City> City { get; set; }
-        public ServiceProvider ServiceProvider { get; set; }
 
     }
 }

@@ -12,9 +12,10 @@ namespace API.Entities
         public ServiceProvider ServiceProvider { get; set; }
         public ICollection<Message> MessagesSend { get; set; }
         public ICollection<Message> MessagesRecieved { get; set; }
+        public ICollection<Invitation> InvitationSender { get; set; }
+        public ICollection<Invitation> InvitationReciver{ get; set; }
         public MainPhoto AppUserPhoto { get; set; }
-
-
-
     }
 }
+
+

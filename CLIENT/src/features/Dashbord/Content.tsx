@@ -47,7 +47,6 @@ export default function Content() {
                 </Paper>
                 <Paper sx={{ mb: 2, p: 2 }}>
                     <FormControl component="fieldset">
-                        <FormLabel component="legend">Gender</FormLabel>
                         <RadioGroup
                             aria-label="gender"
                             defaultValue="female"

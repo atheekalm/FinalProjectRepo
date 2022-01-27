@@ -20,15 +20,14 @@ export default function Navbar() {
   const theme = useTheme();
   const screenIconMatches = useMediaQuery(theme.breakpoints.down('md'));
   // const screenNavListMatches = useMediaQuery(theme.breakpoints.down('sm'));
-  const { user } = useAppSelector(state => state.account);
+  const { user, id } = useAppSelector(state => state.account);
   const dispatch = useAppDispatch();
   const { LoadExist } = useAppSelector(state => state.ProfieExit);
 
   useEffect(() => {
     if (user?.username != null) dispatch(getallMessages());
-    dispatch(ProfileExits(1))
-
-  }, [dispatch, user])
+    dispatch(ProfileExits(id))
+  }, [dispatch, user, id])
 
 
 
@@ -52,9 +51,9 @@ export default function Navbar() {
         <Toolbar>
           {screenIconMatches ? drawerIcon : null}
           <Typography variant="h6" component={NavLink} to={'/'} sx={{ flexGrow: 1 }}>
-            News
+            MYAPP
           </Typography>
-          {user ? (<Authenticated LoadExist={LoadExist}/>
+          {user ? (<Authenticated LoadExist={LoadExist} />
           ) : (
             <>
               <Button color="inherit" component={NavLink} to={'/Register'}>Register</Button>

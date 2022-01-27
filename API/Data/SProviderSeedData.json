@@ -3,7 +3,6 @@
     "Id": 12,
     "FirstName": "Cote",
     "LasttName": "Franklin",
-    "Gender": "Female",
     "Address": "567 Bulwer Place, Broadlands, Wyoming, 111",
     "Age": "1996-05-07",
     "Nic": "727617663V",
@@ -21,6 +20,8 @@
     "LastActive": "1996-05-07",
     "DistrictId":1,
     "CityId":1307,
+    "CategoryId":9,
+    "SubCategoryId":3,
     "Photos": [
       {
         "Url": "https://randomuser.me/api/portraits/men/16.jpg",
@@ -34,7 +35,6 @@
     "Id": 13,
     "FirstName": "Heidi",
     "LasttName": "Savage",
-    "Gender": "Male",
     "Address": "560 Cooke Court, Nanafalia, American Samoa, 8648",
     "Age": "1995-10-12",
     "Nic": "577266197V",
@@ -52,6 +52,8 @@
     "LastActive": "1996-05-07",
     "DistrictId":3,
     "CityId":1373,
+    "CategoryId":8,
+    "SubCategoryId":5,
     "Photos": [
       {
         "Url": "https://randomuser.me/api/portraits/women/68.jpg",
@@ -65,7 +67,6 @@
     "Id": 14,
     "FirstName": "Lucia",
     "LasttName": "Pratt",
-    "Gender": "Male",
     "Address": "147 Hancock Street, Freetown, Wyoming, 8240",
     "Age": "1995-10-12",
     "Nic": "962071229V",
@@ -83,9 +84,11 @@
     "LastActive": "1996-05-07",
     "DistrictId":4,
     "CityId":1043,
+    "CategoryId":55,
+    "SubCategoryId":7,
     "Photos": [
       {
-        "Url": "https://randomuser.me/api/portraits/women/68.jpg",
+        "Url": "https://randomuser.me/api/portraits/women/62.jpg",
         "IsMain": true,
         "PublicId": "excepteur",
         "ProviderId": 14
@@ -96,7 +99,6 @@
     "Id": 15,
     "FirstName": "Buckley",
     "LasttName": "Benson",
-    "Gender": "Male",
     "Address": "669 Schenck Avenue, Falmouth, Wyoming, 6420",
     "Age": "1995-10-12",
     "Nic": "291954229V",
@@ -114,6 +116,8 @@
     "LastActive": "1996-05-07",
     "DistrictId":5,
     "CityId":1224,
+    "CategoryId":10,
+    "SubCategoryId":10,
     "Photos": [
       {
         "Url": "https://randomuser.me/api/portraits/men/64.jpg",

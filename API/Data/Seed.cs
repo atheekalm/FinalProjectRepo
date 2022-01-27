@@ -18,9 +18,11 @@ namespace API.Data
             var userData = await System.IO.File.ReadAllTextAsync(@"Data\userSeedData.json");
             var providerData = await System.IO.File.ReadAllTextAsync(@"Data\SProviderSeedData.json");
             var location = await System.IO.File.ReadAllTextAsync(@"Data\discity.json");
+            var category = await System.IO.File.ReadAllTextAsync(@"Data\category.json");
             var users = JsonSerializer.Deserialize<List<AppUser>>(userData);
             var sdata = JsonSerializer.Deserialize<List<ServiceProvider>>(providerData);
             var loca = JsonSerializer.Deserialize<List<District>>(location);
+            var cate = JsonSerializer.Deserialize<List<Category>>(category);
             if (users == null) return;
 
             var roles = new List<AppRole>{
@@ -45,6 +47,10 @@ namespace API.Data
             foreach (var dist in loca)
             {
                 await context.Districts.AddAsync(dist);
+            }
+            foreach (var catego in cate)
+            {
+                await context.Categories.AddAsync(catego);
             }
             var admin = new AppUser
             {

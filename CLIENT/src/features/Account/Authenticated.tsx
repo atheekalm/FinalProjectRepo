@@ -59,8 +59,7 @@ export default function Authenticated({ LoadExist }: Props) {
                 onClose={handleClose}
                 TransitionComponent={Fade}
             >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem component={NavLink} to={'/EditProfile'} onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={() => dispatch(LogOut())}>Logout</MenuItem>
             </Menu>
         </>

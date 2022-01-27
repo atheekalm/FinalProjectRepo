@@ -14,10 +14,10 @@ using Microsoft.OpenApi.Models;
 using API.Data;
 using API.Entities;
 using API.Helpers;
-using API.IRepository;
-using API.Repository;
 using API.Repository.IRepository;
 using API.SgnalR;
+using API.Repository;
+using API.IRepository;
 
 namespace Trach
 {
@@ -72,6 +72,7 @@ namespace Trach
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhoto, PhotoServices>();
             services.AddScoped<Ilocation,LocationService>();
+            services.AddScoped<Iinvitation,InvitationService>();
             services.AddScoped<IMessage, MessageService>();
             services.AddScoped<UserActivities>();
             services.AddScoped<IProvider, SProvider>();

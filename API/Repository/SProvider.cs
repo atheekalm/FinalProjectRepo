@@ -25,6 +25,12 @@ namespace API.Repository
             _mapper = mapper;
 
         }
+
+        public async Task CreateProfile(ServiceProvider provider)
+        {
+            await _context.ServiceProviders.AddAsync(provider);
+        }
+
         public async Task<ServiceProvider> GetServiceProviderByIdAsync(int Id)
         {
             return await _context.ServiceProviders

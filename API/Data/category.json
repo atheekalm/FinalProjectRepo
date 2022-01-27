@@ -1,0 +1,149 @@
+[
+    {
+        "Id": 9,
+        "CategoryName": "Software services",
+        "SubCategory": [
+            {
+                "Id": 1,
+                "SubCategoryName": "est",
+                "CategoryId": 9
+            },
+            {
+                "Id": 2,
+                "SubCategoryName": "duis",
+                "CategoryId": 9
+            },
+            {
+                "Id": 3,
+                "SubCategoryName": "ipsum",
+                "CategoryId": 9
+            }
+        ]
+    },
+    {
+        "Id": 8,
+        "CategoryName": "Training services",
+        "SubCategory": [
+            {
+                "Id": 4,
+                "SubCategoryName": "anim",
+                "CategoryId": 8
+            },
+            {
+                "Id": 5,
+                "SubCategoryName": "voluptate",
+                "CategoryId": 8
+            },
+            {
+                "Id": 6,
+                "SubCategoryName": "laborum",
+                "CategoryId": 8
+            }
+        ]
+    },
+    {
+        "Id": 55,
+        "CategoryName": "Event planning services",
+        "SubCategory": [
+            {
+                "Id": 7,
+                "SubCategoryName": "occaecat",
+                "CategoryId": 55
+            },
+            {
+                "Id": 8,
+                "SubCategoryName": "eu",
+                "CategoryId": 55
+            },
+            {
+                "Id": 9,
+                "SubCategoryName": "eu",
+                "CategoryId": 55
+            }
+        ]
+    },
+    {
+        "Id": 10,
+        "CategoryName": "Consulting services",
+        "SubCategory": [
+            {
+                "Id": 10,
+                "SubCategoryName": "aute",
+                "CategoryId": 10
+            },
+            {
+                "Id": 11,
+                "SubCategoryName": "in",
+                "CategoryId": 10
+            },
+            {
+                "Id": 12,
+                "SubCategoryName": "amet",
+                "CategoryId": 10
+            }
+        ]
+    },
+    {
+        "Id": 15,
+        "CategoryName": "Marketing services",
+        "SubCategory": [
+            {
+                "Id": 13,
+                "SubCategoryName": "nisi",
+                "CategoryId": 15
+            },
+            {
+                "Id": 14,
+                "SubCategoryName": "amet",
+                "CategoryId": 15
+            },
+            {
+                "Id": 15,
+                "SubCategoryName": "do",
+                "CategoryId": 15
+            }
+        ]
+    },
+    {
+        "Id": 4,
+        "CategoryName": "Waste management services",
+        "SubCategory": [
+            {
+                "Id": 16,
+                "SubCategoryName": "amet",
+                "CategoryId": 4
+            },
+            {
+                "Id": 17,
+                "SubCategoryName": "deserunt",
+                "CategoryId": 4
+            },
+            {
+                "Id": 18,
+                "SubCategoryName": "in",
+                "CategoryId": 4
+            }
+        ]
+    },
+    {
+        "Id": 25,
+        "CategoryName": "Construction services",
+        "SubCategory": [
+            {
+                "Id": 19,
+                "SubCategoryName": "commodo",
+                "CategoryId": 25
+            },
+            {
+                "Id": 20,
+                "SubCategoryName": "aute",
+                "CategoryId": 25
+            },
+            {
+                "Id": 21,
+                "SubCategoryName": "ipsum",
+                "CategoryId": 25
+            }
+        ]
+    }
+]

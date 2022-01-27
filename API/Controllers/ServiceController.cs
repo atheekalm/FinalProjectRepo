@@ -33,6 +33,22 @@ namespace API.Controllers
             _context = context;
         }
 
+
+        [HttpPost("CreateProfile")]
+        public async Task<IActionResult> CreateProfile(ServiceProviderCreateProfileDtos profileDtos)
+        {
+            var UserName = User.GetUserName();
+            var Owner = await _LoggedAppUser.GetAppUserByUserName(UserName);
+            var userExit = await _LoggedAppUser.IfserviceExist(Owner.Id);
+            if(userExit) return BadRequest("Already Profile Exits");
+            var profile = _mapper.Map<ServiceProvider>(profileDtos);
+            profile.AppUserId = Owner.Id;
+            await _ServiceProvider.CreateProfile(profile);
+            await _ServiceProvider.SaveAllAsync();
+            return Ok();
+        }
+
+
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<ActionResult<ServiceProvider>> GetService(int id)
         {
@@ -52,7 +68,7 @@ namespace API.Controllers
             Response.AddPaginationHeader(services.CurrentPage, services.PageSize, services.TotalCount, services.TotalPages);
             return Ok(services);
         }
-         
+
         [HttpPut]
         public async Task<ActionResult> UpdateService(ServiceUpdateDto serviceUpdateDto)
         {

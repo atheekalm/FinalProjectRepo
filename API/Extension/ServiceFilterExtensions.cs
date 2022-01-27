@@ -48,7 +48,7 @@ namespace API.Extension
         public static IQueryable<ServiceProvider> Gender(this IQueryable<ServiceProvider> query, string Gender)
         {
             if (string.IsNullOrWhiteSpace(Gender)) return query;
-            query = query.Where(u => u.Gender == Gender);
+            query = query.Where(u => u.Gender.ToString() == Gender);
             // var genderlist = new List<string> { "Male", "Female" };
             // query = query.Where(x => genderlist.Contains(x.Gender));
             return query;

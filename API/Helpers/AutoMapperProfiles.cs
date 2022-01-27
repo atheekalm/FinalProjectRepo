@@ -1,11 +1,10 @@
+
+
 using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using API.Data;
 using API.DTO;
 using API.Entities;
 using API.Extension;
-using API.Repository.IRepository;
+using AutoMapper;
 
 namespace API.Helpers
 {
@@ -22,14 +21,21 @@ namespace API.Helpers
             .ForMember(dest => dest.District, opt => opt.MapFrom(src => src.District.DistrictName));
             CreateMap<Photo, PhotoDto>();
             CreateMap<ServiceUpdateDto, ServiceProvider>();
-            CreateMap<City,CityDto>().ReverseMap();
-            CreateMap<District,DistrictDto>().ReverseMap();
-            CreateMap<Message,MessagesDto>()
-                .ForMember(des=>des.SenderPhotoUrl,opt=>opt.MapFrom(src=>src.Sender.AppUserPhoto.Url))
-                .ForMember(des=>des.RecipientPhotoUrl,opt=>opt.MapFrom(src=>src.Recipient.AppUserPhoto.Url));
-                
-            // 
-            //.ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.));
+            CreateMap<City, CityDto>().ReverseMap();
+            CreateMap<District, DistrictDto>().ReverseMap();
+            CreateMap<Message, MessagesDto>()
+                .ForMember(des => des.SenderPhotoUrl, opt => opt.MapFrom(src => src.Sender.AppUserPhoto.Url))
+                .ForMember(des => des.RecipientPhotoUrl, opt => opt.MapFrom(src => src.Recipient.AppUserPhoto.Url));
+            CreateMap<InvitationDto, Invitation>().ReverseMap();
+            // CreateMap<Invitation, InvitationDto>();
+            CreateMap<Invitation, InvitationDtoReturn>()
+            .ForMember(dest => dest.SenderId, opt => opt.MapFrom(src => src.SenderId))
+            .ForMember(dest => dest.status, opt => opt.MapFrom(src => src.status))
+            .ForMember(dest => dest.content, opt => opt.MapFrom(src => src.content));
+            CreateMap<ServiceProviderCreateProfileDtos, ServiceProvider>();
+
+
+
         }
 
     }

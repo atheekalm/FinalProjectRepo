@@ -20,5 +20,6 @@ namespace API.Repository.IRepository
         Task<ServiceProviderDto> GetSProviderAsync(string username);
         Task<PageList<ServiceProviderDto>> GetSProvidersAsync(UserParams userParams);
         void RemoveProfile(ServiceProvider ServiceProvider);
+        Task CreateProfile(ServiceProvider provider);
     }
 }
