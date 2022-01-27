@@ -267,7 +267,7 @@ namespace Trach.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubCategory",
+                name: "SubCategories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -277,9 +277,9 @@ namespace Trach.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubCategory", x => x.Id);
+                    table.PrimaryKey("PK_SubCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubCategory_Categories_CategoryId",
+                        name: "FK_SubCategories_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
@@ -364,9 +364,9 @@ namespace Trach.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ServiceProviders_SubCategory_SubCategoryId",
+                        name: "FK_ServiceProviders_SubCategories_SubCategoryId",
                         column: x => x.SubCategoryId,
-                        principalTable: "SubCategory",
+                        principalTable: "SubCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -493,8 +493,8 @@ namespace Trach.Data.Migrations
                 column: "SubCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubCategory_CategoryId",
-                table: "SubCategory",
+                name: "IX_SubCategories_CategoryId",
+                table: "SubCategories",
                 column: "CategoryId");
         }
 
@@ -540,7 +540,7 @@ namespace Trach.Data.Migrations
                 name: "Cities");
 
             migrationBuilder.DropTable(
-                name: "SubCategory");
+                name: "SubCategories");
 
             migrationBuilder.DropTable(
                 name: "Districts");

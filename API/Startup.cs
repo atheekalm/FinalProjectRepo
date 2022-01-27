@@ -72,6 +72,7 @@ namespace Trach
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhoto, PhotoServices>();
             services.AddScoped<Ilocation,LocationService>();
+            services.AddScoped<Icategory,CategoryService>();
             services.AddScoped<Iinvitation,InvitationService>();
             services.AddScoped<IMessage, MessageService>();
             services.AddScoped<UserActivities>();

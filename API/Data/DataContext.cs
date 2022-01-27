@@ -17,6 +17,7 @@ namespace API.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Invitation> Invitations { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

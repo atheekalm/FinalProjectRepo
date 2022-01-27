@@ -29,13 +29,13 @@ export interface DialogTitleProps {
 
 
 export default function LocationsDetails() {
+
   const districts = useAppSelector(locationSelectors.selectAll);
   const cities = useAppSelector(locationCitySelectors.selectAll);
   // const { cities } = useAppSelector(state => state.City);
   const dispatch = useAppDispatch();
   const { LocationLoaded } = useAppSelector(state => state.District);
   const { CityLoaded } = useAppSelector(state => state.City);
-  console.log(cities);
   const [getCities, setCities] = useState<City[]>([]);
   const [SelectedCity, setSelectedCity] = useState('');
 
@@ -50,6 +50,8 @@ export default function LocationsDetails() {
     setOpenList(true);
     setCities(cities.filter(ListCity => ListCity.districtId === districtId));
   };
+
+  
   const SelectCity = (CityName: string) => {
     setOpen(false);
     setSelectedCity(CityName);

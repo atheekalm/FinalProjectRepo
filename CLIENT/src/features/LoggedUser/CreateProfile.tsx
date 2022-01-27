@@ -4,24 +4,62 @@ import TextField from '@mui/material/TextField';
 import { Button, Container, FormControl, IconButton, InputLabel, MenuItem, Paper, Select, SelectChangeEvent, styled } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PhotoCamera } from '@mui/icons-material';
-import { useAppSelector } from '../test_redux/configureStore';
-import Home from '../Dashbord/Home';
+import { useAppDispatch, useAppSelector } from '../test_redux/configureStore';
 import { Redirect } from 'react-router';
+import { FetchAllCities, fetchDistrict, locationCitySelectors, locationSelectors } from '../Locations/locationSlice';
+import { City } from '../../app/models/Location';
 
 export default function CreateProfile() {
+
+
+    const districts = useAppSelector(locationSelectors.selectAll);
+    const cities = useAppSelector(locationCitySelectors.selectAll);
+    const dispatch = useAppDispatch();
+    const { LocationLoaded } = useAppSelector(state => state.District);
+    const { CityLoaded } = useAppSelector(state => state.City);
+    const [getCities, setCities] = useState<City[]>([]);
+    const [SelectedCity, setSelectedCity] = useState('');
+    const [SelectedDistrict, setSelectedDistrict] = useState('');
+
+
+    useEffect(() => {
+        if (!LocationLoaded) dispatch(fetchDistrict());
+        if (!CityLoaded) dispatch(FetchAllCities());
+    }, [LocationLoaded, CityLoaded, dispatch])
+
+
+
+    const handleClick_District = (districtId: number, districtName: string) => {
+        setCities(cities.filter(ListCity => ListCity.districtId === districtId));
+        setSelectedDistrict(districtName);
+    };
+
+    const handleClick_City = (cityName: string) => {
+        setSelectedCity(cityName);
+    }
+
+
+
+
     const Input = styled('input')({
         display: 'none',
     });
-    const [age, setAge] = useState('');
 
-    const handleChange = (event: SelectChangeEvent) => {
-        setAge(event.target.value);
-    };
+
+
     const { LoadExist } = useAppSelector(state => state.ProfieExit);
 
     if (!LoadExist) return <Redirect to="/" />
+
+
+
+
+
+
+
+
 
 
     return (
@@ -192,16 +230,14 @@ export default function CreateProfile() {
                                 <Select
                                     labelId="demo-simple-select-standard-label"
                                     id="demo-simple-select-standard"
-                                    value={age}
-                                    onChange={handleChange}
-                                    label="Age"
+                                    value={SelectedDistrict}
                                 >
                                     <MenuItem value="">
                                         <em>None</em>
                                     </MenuItem>
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    {districts.map(district => (
+                                        <MenuItem onClick={() => handleClick_District(district.id, district.districtName)} value={district.districtName}>{district.districtName}</MenuItem>
+                                    ))}
                                 </Select>
                             </FormControl>
                         </Grid>
@@ -211,16 +247,14 @@ export default function CreateProfile() {
                                 <Select
                                     labelId="demo-simple-select-standard-label"
                                     id="demo-simple-select-standard"
-                                    value={age}
-                                    onChange={handleChange}
-                                    label="Age"
+                                    value={SelectedCity}
                                 >
                                     <MenuItem value="">
                                         <em>None</em>
                                     </MenuItem>
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    {getCities.map(city => (
+                                        <MenuItem onClick={() => handleClick_City(city.citytName)} value={city.citytName}>{city.citytName}</MenuItem>
+                                    ))}
                                 </Select>
                             </FormControl>
                         </Grid>

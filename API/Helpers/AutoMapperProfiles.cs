@@ -33,6 +33,8 @@ namespace API.Helpers
             .ForMember(dest => dest.status, opt => opt.MapFrom(src => src.status))
             .ForMember(dest => dest.content, opt => opt.MapFrom(src => src.content));
             CreateMap<ServiceProviderCreateProfileDtos, ServiceProvider>();
+            CreateMap<Category, CategoryDto>();
+            CreateMap<SubCategory, SubCategoryDto>();
 
 
 
