@@ -92,7 +92,7 @@ namespace Trach
             services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<DataContext>(options =>
                        {
-                           options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
+                           options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
                        });
             services.AddControllers();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(

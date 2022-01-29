@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nHXYpOBBH+UqQhSOQddRFrDuxAl1hFx/GGC4hE8an9vpVoQFzhBN+2sVPKGR3Q8rzuH8ykfBsZItgVsjpEvopw==",
+  "dgSpecHash": "HNzeHa02S75ufKkoDJwdS1oJ6ZSgS3wMwLtRCAgwynjO8nDU2jI7BVfPve+PMjQ8ElRtnuz9OYG3XgRYXhh8qg==",
   "success": true,
-  "projectFilePath": "F:\\FinalProjectRepo\\api\\Trach.csproj",
+  "projectFilePath": "F:\\FinalProjectRepo\\API\\Trach.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\athee\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\athee\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

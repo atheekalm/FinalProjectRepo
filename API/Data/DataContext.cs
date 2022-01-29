@@ -35,14 +35,35 @@ namespace API.Data
                 .HasForeignKey(f => f.DistrictId)
                 .IsRequired();
 
+            builder.Entity<ServiceProvider>()
+                .HasOne(d => d.District)
+                .WithMany()
+                .HasForeignKey(d => d.DistrictId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ServiceProvider>()
+                .HasOne(c => c.City)
+                .WithMany()
+                .HasForeignKey(c => c.CityId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ServiceProvider>()
+                .HasOne(c => c.Category)
+                .WithMany()
+                .HasForeignKey(c => c.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ServiceProvider>()
+                .HasOne(s => s.SubCategory)
+                .WithMany()
+                .HasForeignKey(s => s.SubCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.Entity<AppUser>()
                 .HasMany(ur => ur.UserRole)
                 .WithOne(u => u.User)
                 .HasForeignKey(ur => ur.UserId)
                 .IsRequired();
-
-
-
 
             builder.Entity<AppRole>()
                 .HasMany(ur => ur.UserRole)
@@ -69,11 +90,6 @@ namespace API.Data
                 .HasOne(p => p.Sender)
                 .WithMany(u => u.InvitationReciver)
                 .OnDelete(DeleteBehavior.Restrict);
-
-
-
-
-
 
         }
 

@@ -5,7 +5,6 @@ namespace API.Entities
     public class Invitation
     {
         public int Id { get; set; }
-        
         public AppUser Sender { get; set; }
         public int SenderId { get; set; }
         public string SenderUsername { get; set; }

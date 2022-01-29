@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using API.Helpers;
 
 namespace API.Entities
 {
     public class ServiceProvider
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
         public int Id { get; set; }
         public string FirstName { get; set; }
