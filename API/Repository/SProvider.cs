@@ -34,17 +34,16 @@ namespace API.Repository
         public async Task<ServiceProvider> GetServiceProviderByIdAsync(int Id)
         {
             return await _context.ServiceProviders
-                .Where(x => x.Id == Id)
-                .ProjectTo<ServiceProvider>(_mapper.ConfigurationProvider)
-                .SingleOrDefaultAsync();
+                .Include(p => p.Photos)
+                .SingleOrDefaultAsync(x => x.AppUserId == Id);
+
         }
 
         public async Task<ServiceProvider> GetServiceProviderByUsernameAsync(string username)
         {
             return await _context.ServiceProviders
-                .Where(x => x.AppUser.UserName == username)
-                .ProjectTo<ServiceProvider>(_mapper.ConfigurationProvider)
-                .SingleOrDefaultAsync();
+                .Include(p => p.Photos)
+                .SingleOrDefaultAsync(x => x.AppUser.UserName == username);
         }
 
         public async Task<IEnumerable<ServiceProvider>> GetServiceProvidersAsync()
@@ -55,7 +54,7 @@ namespace API.Repository
         public async Task<ServiceProviderDto> GetSProviderAsync(int id)
         {
             return await _context.ServiceProviders
-           .Where(x => x.Id == id)
+           .Where(x => x.AppUserId == id)
            .ProjectTo<ServiceProviderDto>(_mapper.ConfigurationProvider)
            .SingleOrDefaultAsync();
         }
@@ -91,7 +90,7 @@ namespace API.Repository
         }
 
 
-        
+
         public void RemoveProfile(ServiceProvider ServiceProvider)
         {
             _context.ServiceProviders.Remove(ServiceProvider);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,9 +26,13 @@ namespace API.DTO
         public int AppUserId { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime LastActive { get; set; } = DateTime.Now;
+        [Required]
         public int DistrictId { get; set; }
+        [Required]
         public int CityId { get; set; }
+        [Required]
         public int CategoryId { get; set; }
+        [Required]
         public int SubCategoryId { get; set; }
     }
 }

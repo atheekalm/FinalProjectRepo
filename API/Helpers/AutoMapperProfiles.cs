@@ -19,7 +19,7 @@ namespace API.Helpers
             .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Age.CalculateAge()))
             .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City.CitytName))
             .ForMember(dest => dest.District, opt => opt.MapFrom(src => src.District.DistrictName));
-            CreateMap<Photo, PhotoDto>();
+            CreateMap<Photo, PhotoDto>().ReverseMap();
             CreateMap<ServiceUpdateDto, ServiceProvider>();
             CreateMap<City, CityDto>().ReverseMap();
             CreateMap<District, DistrictDto>().ReverseMap();
@@ -27,7 +27,6 @@ namespace API.Helpers
                 .ForMember(des => des.SenderPhotoUrl, opt => opt.MapFrom(src => src.Sender.AppUserPhoto.Url))
                 .ForMember(des => des.RecipientPhotoUrl, opt => opt.MapFrom(src => src.Recipient.AppUserPhoto.Url));
             CreateMap<InvitationDto, Invitation>().ReverseMap();
-            // CreateMap<Invitation, InvitationDto>();
             CreateMap<Invitation, InvitationDtoReturn>()
             .ForMember(dest => dest.SenderId, opt => opt.MapFrom(src => src.SenderId))
             .ForMember(dest => dest.status, opt => opt.MapFrom(src => src.status))

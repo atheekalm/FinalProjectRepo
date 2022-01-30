@@ -45,7 +45,8 @@ namespace API.Controllers
             profile.AppUserId = Owner.Id;
             await _ServiceProvider.CreateProfile(profile);
             await _ServiceProvider.SaveAllAsync();
-            return Ok();
+            return Ok("Success...");
+
         }
 
 
@@ -53,9 +54,10 @@ namespace API.Controllers
         public async Task<ActionResult<ServiceProvider>> GetService(int id)
         {
             var SProvider = await _ServiceProvider.GetSProviderAsync(id);
-            var result = _mapper.Map<ServiceProviderDto>(SProvider);
-            return Ok(result);
+            return Ok(SProvider);
         }
+
+
         [AllowAnonymous]
         [HttpGet("Services")]
         public async Task<ActionResult<IEnumerable<ServiceProviderDto>>> GetServices([FromQuery] UserParams userParams)
@@ -72,17 +74,17 @@ namespace API.Controllers
         [HttpPut]
         public async Task<ActionResult> UpdateService(ServiceUpdateDto serviceUpdateDto)
         {
-            var getservice = await _ServiceProvider.IfserviceExistReturnUser(User.GetUserId());
-            _mapper.Map(serviceUpdateDto, getservice);
-            _ServiceProvider.Update(getservice);
+            var selectedservice = await _ServiceProvider.IfserviceExistReturnUser(User.GetUserId());
+            _mapper.Map(serviceUpdateDto, selectedservice);
+            _ServiceProvider.Update(selectedservice);
             if (await _ServiceProvider.SaveAllAsync()) return NoContent();
             return BadRequest();
         }
+
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto([FromForm] IFormFile file)
         {
-            //int.Parse(User.GetUserId())
-
+            var id = User.GetUserId();
             var service = await _ServiceProvider.GetServiceProviderByIdAsync(User.GetUserId());
             var result = await _photo.AddPhotoAsync(file);
             if (result.Error != null) return BadRequest(result.Error.Message);
@@ -100,9 +102,9 @@ namespace API.Controllers
             {
                 return CreatedAtRoute("GetUser", new { id = service.Id }, _mapper.Map<PhotoDto>(photo));
             }
-            //return _mapper.Map<PhotoDto>(photo);
             return BadRequest("Problem Adding Photos");
         }
+        
 
         [HttpPut("set-main-photo/{photoId}")]
         public async Task<ActionResult> SetmainPhoto(int photoId)
