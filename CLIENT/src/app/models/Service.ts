@@ -1,4 +1,4 @@
-import { Photo } from "./Photo";
+import { photos } from "./Photo";
 
 export interface Service{
     id: number;
@@ -21,5 +21,5 @@ export interface Service{
     created: Date;
     city: string;
     district: string;
-    photos: Photo[];
+    photos: photos[];
 }

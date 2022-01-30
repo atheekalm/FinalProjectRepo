@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\FinalProjectRepo\\API\\Trach.csproj": {}
+    "F:\\FinalProjectRepo\\api\\Trach.csproj": {}
   },
   "projects": {
-    "F:\\FinalProjectRepo\\API\\Trach.csproj": {
+    "F:\\FinalProjectRepo\\api\\Trach.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\FinalProjectRepo\\API\\Trach.csproj",
+        "projectUniqueName": "F:\\FinalProjectRepo\\api\\Trach.csproj",
         "projectName": "Trach",
-        "projectPath": "F:\\FinalProjectRepo\\API\\Trach.csproj",
+        "projectPath": "F:\\FinalProjectRepo\\api\\Trach.csproj",
         "packagesPath": "C:\\Users\\athee\\.nuget\\packages\\",
-        "outputPath": "F:\\FinalProjectRepo\\API\\obj\\",
+        "outputPath": "F:\\FinalProjectRepo\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\athee\\AppData\\Roaming\\NuGet\\NuGet.Config",

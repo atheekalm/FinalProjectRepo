@@ -1,7 +1,7 @@
 import { Button, Menu, Fade, MenuItem, Badge } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useAppDispatch } from "../test_redux/configureStore";
+import { useAppDispatch, useAppSelector } from "../test_redux/configureStore";
 import MailIcon from '@mui/icons-material/Mail';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { LogOut } from "./accountSlice";
@@ -14,7 +14,7 @@ interface Props {
 
 export default function Authenticated({ LoadExist }: Props) {
     const dispatch = useAppDispatch();
-    // const { user } = useAppSelector(state => state.account);
+    const { user } = useAppSelector(state => state.account);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: any) => {
@@ -34,6 +34,7 @@ export default function Authenticated({ LoadExist }: Props) {
             <Badge color="error" badgeContent={4} showZero component={NavLink} to={'/Messages'} sx={{ margin: '1rem' }}>
                 <MailIcon sx={{ color: 'white', }} />
             </Badge>
+            {user?.username}
             <Button
                 // color='inherit'
                 onClick={handleClick}
@@ -41,6 +42,7 @@ export default function Authenticated({ LoadExist }: Props) {
             >
                 <AccountCircle sx={{ color: 'white', }} />
             </Button>
+            
 
             {/* <IconButton
               size="large"

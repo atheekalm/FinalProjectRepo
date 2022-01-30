@@ -1,11 +1,10 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { Button, Container, FormControl, IconButton, InputLabel, MenuItem, Paper, Select, SelectChangeEvent, styled } from '@mui/material';
+import { Button, Container, FormControl, InputLabel, MenuItem, Paper, Select, styled } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { useEffect, useState } from 'react';
-import { PhotoCamera } from '@mui/icons-material';
 import { useAppDispatch, useAppSelector } from '../test_redux/configureStore';
 import { Redirect } from 'react-router';
 import { FetchAllCities, fetchDistrict, locationCitySelectors, locationSelectors } from '../Locations/locationSlice';
@@ -258,25 +257,45 @@ export default function CreateProfile() {
                                 </Select>
                             </FormControl>
                         </Grid>
+                        
+
+
                         <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="Category"
-                                name="Category"
-                                label="Category"
-                                fullWidth
-                                autoComplete="shipping country"
-                                variant="standard"
-                            />
+                            <FormControl variant="standard" fullWidth>
+                                <InputLabel id="demo-simple-select-standard-label">District*</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-standard-label"
+                                    id="demo-simple-select-standard"
+                                    value={SelectedDistrict}
+                                >
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    {districts.map(district => (
+                                        <MenuItem onClick={() => handleClick_District(district.id, district.districtName)} value={district.districtName}>{district.districtName}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <label htmlFor="icon-button-file">
-                                <Input accept="image/*" id="icon-button-file" type="file" />
-                                <IconButton color="primary" aria-label="upload picture" component="span">
-                                    <PhotoCamera />
-                                </IconButton>
-                            </label>
+                            <FormControl variant="standard" fullWidth>
+                                <InputLabel id="demo-simple-select-standard-label">City*</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-standard-label"
+                                    id="demo-simple-select-standard"
+                                    value={SelectedCity}
+                                >
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    {getCities.map(city => (
+                                        <MenuItem onClick={() => handleClick_City(city.citytName)} value={city.citytName}>{city.citytName}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
                         </Grid>
+
+
                         <Grid item xs={12}>
                             <Button variant="contained">Cancel</Button>
                             <Button variant="contained">Submit</Button>

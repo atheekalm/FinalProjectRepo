@@ -8,7 +8,6 @@ namespace API.DTO
 {
     public class ServiceProviderCreateProfileDtos
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LasttName { get; set; }
         public string Gender { get; set; }

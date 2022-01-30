@@ -1,15 +1,13 @@
-import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import CategoryIcon from '@mui/icons-material/Category';
 import { Collapse, Grid, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { StarBorder } from '@mui/icons-material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../test_redux/configureStore';
+import CategoryIcon from '@mui/icons-material/Category';
+import { categoriesSelector, fetchCategories, fetchsubcategories, subcategoriesSelector } from './CategorySlice';
+import { subcategory } from '../../app/models/Category';
 
 
 
@@ -28,36 +26,38 @@ export interface DialogTitleProps {
   onClose: () => void;
 }
 
-const BootstrapDialogTitle = (props: DialogTitleProps) => {
-  const { children, onClose, ...other } = props;
 
-  return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-      {children}
-      {onClose ? (
-        <IconButton
-          aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </DialogTitle>
-  );
-};
+export default function LocationsDetails() {
 
-export default function CategoryDetails() {
-  const [openList, setOpenList] = useState(true);
+  const category = useAppSelector(categoriesSelector.selectAll);
+  const subcategory = useAppSelector(subcategoriesSelector.selectAll);
+  const dispatch = useAppDispatch();
+  const { categoriesLoaded } = useAppSelector(state => state.Category);
+  const { subcategoriesLoaded } = useAppSelector(state => state.SubCategory);
+  const [getSubCate, setSubCate] = useState<subcategory[]>([]);
+  const [SelectedSubcatego, setSubcatego] = useState('');
 
-  const handleClick = () => {
-    setOpenList(!openList);
+  useEffect(() => {
+    if (!categoriesLoaded) dispatch(fetchCategories());
+    if (!subcategoriesLoaded) dispatch(fetchsubcategories());
+  }, [categoriesLoaded, subcategoriesLoaded, dispatch])
+
+  const [openList, setOpenList] = useState(false);
+
+  const handleClick = (Id: number) => {
+    setOpenList(true);
+    setSubCate(subcategory.filter(subcat => subcat.categoryId === Id));
   };
+
+  
+  const SelectSub = (subcato: string) => {
+    setOpen(false);
+    setSubcatego(subcato);
+    // dispatch(setServiceParams({ City: CityName }))
+
+  }
+
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -67,46 +67,54 @@ export default function CategoryDetails() {
     setOpen(false);
   };
 
+
+
   return (
     <>
       <ListItemButton onClick={handleClickOpen}>
         <ListItemIcon>
           <CategoryIcon />
         </ListItemIcon>
-        <ListItemText primary="Category" />
+        <ListItemText primary={SelectedSubcatego || "Categories"} />
       </ListItemButton>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Category
-        </BootstrapDialogTitle>
-        <DialogContent dividers>
-          <Grid container spacing={2}>
+        
+        <DialogContent dividers sx={{width:'450px'}}>
+          <Grid container spacing={2} item>
 
-            <Grid >
+            <Grid item>
               <List
-                sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
               >
-                <ListItemButton onClick={handleClick}>
-                  <ListItemText primary="Inbox   " />
-                  {openList ? <ArrowForwardIosIcon fontSize='small' /> : <ArrowForwardIosIcon fontSize='small' />}
-                </ListItemButton>
+                {category.map(cate => (
+                  <ListItemButton
+                    key={cate.id}
+                    onClick={() => handleClick(cate.id)}
+                    style={{ backgroundColor: 'transparent' }}>
+                    <ListItemText primary={cate.categoryName} />
+                    {openList ? <ArrowForwardIosIcon fontSize='small' /> : <ArrowForwardIosIcon fontSize='small' />}
+                  </ListItemButton>
+                ))}
               </List>
             </Grid>
-            <Grid xs={6} item={true}>
+            <Grid item>
               <Collapse in={openList} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemIcon>
-                      <StarBorder />
-                    </ListItemIcon>
-                    <ListItemText primary="Starred" />
-                  </ListItemButton>
+                <List
+                  sx={{ marginTop: 0.3 }}
+                  component="nav"
+                  aria-labelledby="nested-list-subheader"
+                >
+                  {getSubCate?.map(sub =>
+                    <ListItemButton key={sub.id} onClick={() => SelectSub(sub.subCategoryName)}>
+                      <ListItemText primary={sub.subCategoryName} />
+                    </ListItemButton>
+                  )}
                 </List>
               </Collapse>
             </Grid>

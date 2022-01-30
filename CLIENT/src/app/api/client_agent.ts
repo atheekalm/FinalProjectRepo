@@ -65,7 +65,12 @@ const Message = {
 }
 
 const loggedUser = {
-    checkProfileExist:(id:any)=>requests.get(`LoggedUser/CheckProfileExist/${id}`)
+    checkProfileExist: (id: any) => requests.get(`LoggedUser/CheckProfileExist/${id}`)
+}
+
+const Category = {
+    category: () => requests.get('Category/Category'),
+    subcategory: () => requests.get('Category/SubCategory')
 }
 
 const client_agent = {
@@ -73,7 +78,8 @@ const client_agent = {
     Account,
     Location,
     Message,
-    loggedUser
+    loggedUser,
+    Category
 }
 
 export default client_agent;

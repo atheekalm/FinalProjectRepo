@@ -1,3 +1,4 @@
+import { categorySlice, subcategorySlice } from './../Category/CategorySlice';
 import { messageSlice } from './../Chat/messageSlice';
 import { locationSlice, locationSlice_Cities } from './../Locations/locationSlice';
 import { serviceSlice } from './../Services/serviceSlice';
@@ -20,7 +21,9 @@ export const store = configureStore({
         City: locationSlice_Cities.reducer,
         Messages: messageSlice.reducer,
         MessageThread: messagethredSlice.reducer,
-        ProfieExit: checkProfileExitSlice.reducer
+        ProfieExit: checkProfileExitSlice.reducer,
+        Category: categorySlice.reducer,
+        SubCategory:subcategorySlice.reducer
     }
 })
 
