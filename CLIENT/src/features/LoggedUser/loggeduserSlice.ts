@@ -22,7 +22,7 @@ export const GetUserProfile = createAsyncThunk<User, number>(
     'users/ProfileExit',
     async (userId, thunkAPI) => {
         try {
-            return await client_agent.loggedUser.checkProfileExist(userId);
+            return await client_agent.Appservice.checkProfileExist(userId);
         } catch (error: any) {
             return thunkAPI.rejectWithValue({ error: error.data })
         }
@@ -34,7 +34,7 @@ export const ProfileExits = createAsyncThunk<boolean, number>(
     'users/ProfileExit',
     async (userId, thunkAPI) => {
         try {
-            return await client_agent.loggedUser.checkProfileExist(userId);
+            return await client_agent.Appservice.checkProfileExist(userId);
         } catch (error: any) {
             return thunkAPI.rejectWithValue({ error: error.data })
         }

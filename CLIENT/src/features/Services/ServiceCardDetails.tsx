@@ -1,25 +1,10 @@
-import { Avatar, Box, Button, Container, Divider, Fab, Grid, List, ListItem, ListItemText, Paper, Rating, Tab, Tabs, TextField, Typography, useTheme } from "@mui/material";
+import { Avatar, Box, Button, Container, Divider, Fab, Grid, List, ListItem, Paper, Rating, Tab, Tabs, TextField, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../test_redux/configureStore";
 import { fetchServiceAsync, serviceSelectors } from "./serviceSlice";
 import SendIcon from '@mui/icons-material/Send';
-
-
-
-import MobileStepper from '@mui/material/MobileStepper';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-
-
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
-import { photos } from "../../app/models/Photo";
 import UserPhotoCollection from "./UserPhotoCollection";
-
-
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 
 
@@ -77,21 +62,23 @@ export default function ServiceCardDetails() {
 
 
 
-  const [activeStep, setActiveStep] = useState(0);
+  // const [activeStep, setActiveStep] = useState(0);
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+  // const handleNext = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  // };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  // const handleBack = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  // };
 
-  const handleStepChange = (step: number) => {
-    setActiveStep(step);
-  };
+  // const handleStepChange = (step: number) => {
+  //   setActiveStep(step);
+  // };
 
-  const theme = useTheme();
+  // const theme = useTheme();
+
+
   const [ratingvalue, ratingsetValue] = useState<number | null>(2);
 
   const [value, setValue] = useState(0);

@@ -1,6 +1,8 @@
+import { Service } from './../models/Service';
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { store } from "../../features/test_redux/configureStore";
+import { request } from 'http';
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
 
@@ -35,6 +37,7 @@ axios.interceptors.response.use(async responce => {
     return Promise.reject(error.response);
 });
 
+
 const requests = {
     get: (url: string, params?: URLSearchParams) => axios.get(url, { params }).then(responcebody),
     post: (url: string, body: {}) => axios.post(url, body).then(responcebody),
@@ -44,7 +47,9 @@ const requests = {
 
 const Appservice = {
     services: (params: URLSearchParams) => requests.get('Service/Services', params),
-    service: (id: number) => requests.get(`Service/${id}`)
+    service: (id: number) => requests.get(`Service/${id}`),
+    checkProfileExist: (id: any) => requests.get(`LoggedUser/CheckProfileExist/${id}`),
+    createProfile: (service: Service) => requests.post('Service/CreateProfile', service)
 }
 
 const Location = {
@@ -64,9 +69,6 @@ const Message = {
     getThread: (value: any) => requests.get(`Message/thread/${value}`)
 }
 
-const loggedUser = {
-    checkProfileExist: (id: any) => requests.get(`LoggedUser/CheckProfileExist/${id}`)
-}
 
 const Category = {
     category: () => requests.get('Category/Category'),
@@ -78,7 +80,6 @@ const client_agent = {
     Account,
     Location,
     Message,
-    loggedUser,
     Category
 }
 

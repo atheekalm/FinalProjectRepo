@@ -21,5 +21,7 @@ export interface Service{
     created: Date;
     city: string;
     district: string;
+    category:string,
+    subCategory:string,
     photos: photos[];
 }

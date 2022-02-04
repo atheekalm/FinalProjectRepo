@@ -62,10 +62,6 @@ namespace API.Controllers
         [HttpGet("Services")]
         public async Task<ActionResult<IEnumerable<ServiceProviderDto>>> GetServices([FromQuery] UserParams userParams)
         {
-            //var user = await _LoggedAppUser.GetAppUserByUserName(User.GetUserName());
-
-            // var service = await _ServiceProvider.GetSProviderAsync(User.GetUserName());
-            //userParams.CurrentuserId = user.Id;//2;//user.Id;//service.UserName;
             var services = await _ServiceProvider.GetSProvidersAsync(userParams);
             Response.AddPaginationHeader(services.CurrentPage, services.PageSize, services.TotalCount, services.TotalPages);
             return Ok(services);
