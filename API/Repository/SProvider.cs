@@ -76,6 +76,9 @@ namespace API.Repository
             .Search(userParams.SearchTearm)
             .District(userParams.District)
             .City(userParams.City)
+            .Category(userParams.Category)
+            .SubCategory(userParams.SubCategory)
+            .TopServices()
             .AsQueryable();
 
             return await PageList<ServiceProviderDto>.CreateAsync(query.ProjectTo<ServiceProviderDto>(_mapper

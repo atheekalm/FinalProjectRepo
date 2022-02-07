@@ -13,7 +13,7 @@ namespace API.Entities
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LasttName { get; set; }
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
         public string Address { get; set; }
         public DateTime Age { get; set; }
         public string Nic { get; set; }

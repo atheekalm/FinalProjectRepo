@@ -48,30 +48,40 @@ namespace API.Extension
         public static IQueryable<ServiceProvider> Gender(this IQueryable<ServiceProvider> query, string Gender)
         {
             if (string.IsNullOrWhiteSpace(Gender)) return query;
-            query = query.Where(u => u.Gender.ToString() == Gender);
-            // var genderlist = new List<string> { "Male", "Female" };
-            // query = query.Where(x => genderlist.Contains(x.Gender));
+            var genderlist = new List<string> { "Male", "Female", "All" };
+            query = query.Where(u => genderlist.Contains(u.Gender));
             return query;
         }
-
-        //not configured
-        public static IQueryable<ServiceProvider> Category(this IQueryable<ServiceProvider> query, string City)
+        public static IQueryable<ServiceProvider> Category(this IQueryable<ServiceProvider> query, string Category)
         {
-            if (string.IsNullOrWhiteSpace(City)) return query;
-            var lowerCity = City.Trim().ToLower();
-            return query = query.Where(x => x.City.CitytName == lowerCity);
+            if (string.IsNullOrWhiteSpace(Category)) return query;
+            var lowerCategory = Category.Trim().ToLower();
+            return query = query.Where(x => x.Category.CategoryName == lowerCategory);
         }
-        public static IQueryable<ServiceProvider> SubCategory(this IQueryable<ServiceProvider> query, string City)
+        public static IQueryable<ServiceProvider> SubCategory(this IQueryable<ServiceProvider> query, string SubCategory)
         {
-            if (string.IsNullOrWhiteSpace(City)) return query;
-            var lowerCity = City.Trim().ToLower();
-            return query = query.Where(x => x.City.CitytName == lowerCity);
+            if (string.IsNullOrWhiteSpace(SubCategory)) return query;
+            var lowerSubCategory = SubCategory.Trim().ToLower();
+            return query = query.Where(x => x.SubCategory.SubCategoryName == lowerSubCategory);
         }
         public static IQueryable<ServiceProvider> StatusAvailable(this IQueryable<ServiceProvider> query, string City)
         {
             if (string.IsNullOrWhiteSpace(City)) return query;
             var lowerCity = City.Trim().ToLower();
             return query = query.Where(x => x.City.CitytName == lowerCity);
+        }
+
+        public static IQueryable<ServiceProvider> TopServices(this IQueryable<ServiceProvider> query)
+        {
+
+            return query.Where(x => x.Rating < 4.0);
+        }
+
+        public static IQueryable<ServiceProvider> WorkType(this IQueryable<ServiceProvider> query, string type)
+        {
+            if (string.IsNullOrEmpty(type)) return query;
+            var lowerType = type.Trim().ToLower();
+            return query = query.Where(x => x.WorkAs == lowerType);
         }
 
     }

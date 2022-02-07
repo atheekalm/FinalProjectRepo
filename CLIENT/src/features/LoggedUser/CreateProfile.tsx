@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { Box, Button, Container, FormControl, InputLabel, MenuItem, Paper, Select, styled } from '@mui/material';
+import { Button, Box, Container, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Paper, Radio, RadioGroup, Select } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { useEffect, useState } from 'react';
@@ -77,6 +77,143 @@ export default function CreateProfile() {
 
     return (
         <>
+            <Container component="main" >
+                <Grid container spacing={2} sx={{ mt: 4 }}>
+                    <Grid xs={12} md={5} sx={{ margin: 1 }}>
+                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
+                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />                <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
+                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
+                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
+                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
+                    </Grid>
+                    <Grid xs={12} md={6} >
+                        <FormControl sx={{ margin: 1 }}>
+                            <FormLabel>Gender</FormLabel>
+                            <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                            >
+                                <FormControlLabel value="female" control={<Radio />} label="Female" />
+                                <FormControlLabel value="male" control={<Radio />} label="Male" />
+                            </RadioGroup>
+                        </FormControl>
+                        <Grid item>
+                            <LocalizationProvider dateAdapter={AdapterDateFns} >
+                                <DatePicker
+                                    views={['day']}
+                                    label="Just date"
+                                    value={value}
+                                    onChange={(newValue) => {
+                                        setValue(newValue);
+                                    }}
+                                    renderInput={(params) => <TextField fullWidth sx={{ margin: 1 }} {...params} helperText={null} />}
+                                />
+                            </LocalizationProvider>
+                            <Grid container spacing={2}>
+                                <Grid item md={6} xs={12} sm={12}>
+                                    <FormControl sx={{ margin: 1 }} variant="outlined" fullWidth >
+                                        <InputLabel id="demo-simple-select-standard-label">District*</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            value={SelectedDistrict}
+                                            autoFocus
+                                            {...register('district', { required: 'district is Required' })}
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            {districts.map(district => (
+                                                <MenuItem onClick={() => handleClick_District(district.id, district.districtName)} value={district.districtName}>{district.districtName}</MenuItem>
+                                            ))}
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item md={6} xs={12} sm={12}>
+                                    <FormControl sx={{ margin: 1 }} variant="outlined" fullWidth>
+                                        <InputLabel id="demo-simple-select-standard-label">City*</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            value={SelectedCity}
+                                            autoFocus
+                                            {...register('city', { required: 'city is Required' })}
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            {getCities.map(city => (
+                                                <MenuItem onClick={() => handleClick_City(city.citytName)} value={city.citytName}>{city.citytName}</MenuItem>
+                                            ))}
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </Grid>
+                            <Grid container spacing={2}>
+                                <Grid item md={6} xs={12} sm={12}>
+                                    <FormControl sx={{ margin: 1 }} variant="outlined" fullWidth>
+                                        <InputLabel id="demo-simple-select-standard-label">Category*</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={SelectedCategory}
+                                            autoFocus
+                                            {...register('category', { required: 'category is Required' })}
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            {categories.map(categor => (
+                                                <MenuItem onClick={() => handleClick_Category(categor.id, categor.categoryName)} value={categor.categoryName}>{categor.categoryName}</MenuItem>
+                                            ))}
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item md={6} xs={12} sm={12}>
+                                    <FormControl sx={{ margin: 1 }} variant="outlined" fullWidth>
+                                        <InputLabel id="demo-simple-select-standard-label">SubCategory*</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={SelectedSubCategory}
+                                            autoFocus
+                                            {...register('subCategory', { required: 'subCategory is Required' })}
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            {getSubCategory.map(getSub => (
+                                                <MenuItem onClick={() => handleClick_SubCategory(getSub.subCategoryName)} value={getSub.subCategoryName}>{getSub.subCategoryName}</MenuItem>
+                                            ))}
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </Grid>
+                            <TextField
+                                multiline
+                                rows={3}
+                                fullWidth
+                                id="outlined-basic"
+                                label="Outlined"
+                                variant="outlined"
+                                sx={{ margin: 1 }}
+                                defaultValue="Default Value"
+                            />
+                        </Grid>
+                    </Grid>
+                    <LoadingButton
+                        disabled={!isValid}
+                        loading={isSubmitting}
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ margin: 1 }}
+                    >
+                        Create Profile
+                    </LoadingButton>
+                </Grid>
+            </Container>
+
+            {/* 
             <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
                 <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
                     <Typography variant="h6" gutterBottom>
@@ -347,7 +484,7 @@ export default function CreateProfile() {
                         </LoadingButton>
                     </Box>
                 </Paper>
-            </Container>
+            </Container> */}
         </>
     );
 }

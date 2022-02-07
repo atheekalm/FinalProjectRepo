@@ -19,7 +19,7 @@ namespace API.Helpers
         public string District { get; set; }
         public string City { get; set; }
         public string OrderBy { get; set; } = "LastActive";
-        public int TopRatedServices { get; set; }
+        public double TopRatedServices { get; set; } 
         public string Status { get; set; }
     }
 }

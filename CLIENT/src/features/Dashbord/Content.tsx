@@ -1,10 +1,13 @@
 import {
-    Box, FormControl, FormControlLabel, FormLabel, Grid, List,
+    Box, FormControl, FormControlLabel, Grid, List,
     ListItemButton, ListItemIcon, ListItemText, ListSubheader, Pagination, Paper, Radio,
     RadioGroup,
     useMediaQuery,
-    useTheme
+    useTheme,
+    Checkbox
 } from "@mui/material";
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import Services from "../Services/Services";
 import LocationsDetails from "../Locations/LocationsDetails";
@@ -41,7 +44,19 @@ export default function Content() {
                             <ListItemIcon>
                                 <StarRateIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Top Rating" />
+                            <ListItemText primary="Top Services" />
+                        </ListItemButton>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <PhoneInTalkIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Over Call" />
+                        </ListItemButton>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <MapsHomeWorkIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="In Place" />
                         </ListItemButton>
                     </List>
                 </Paper>
@@ -52,10 +67,8 @@ export default function Content() {
                             defaultValue="female"
                             name="radio-buttons-group"
                         >
-                            <FormControlLabel value="All" control={<Radio />} label="All" />
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                            <FormControlLabel value="SMEs" control={<Radio />} label="SMEs" />
+                            <FormControlLabel value="female" control={<Checkbox  />} label="Female" />
+                            <FormControlLabel value="male" control={<Checkbox />} label="Male" />
                         </RadioGroup>
                     </FormControl>
                 </Paper>

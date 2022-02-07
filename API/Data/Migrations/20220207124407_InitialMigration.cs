@@ -310,7 +310,7 @@ namespace Trach.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LasttName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Gender = table.Column<int>(type: "int", nullable: false),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Age = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Nic = table.Column<string>(type: "nvarchar(max)", nullable: true),
