@@ -63,6 +63,7 @@ const Account = {
     register: (values: any) => requests.post('Auth/Register', values),
     currentUser: () => requests.get('Auth/currentUser'),
 }
+
 const Message = {
     getallMessages: () => requests.get('Message'),
     sendMessage: (values: any) => requests.post('Message', values),

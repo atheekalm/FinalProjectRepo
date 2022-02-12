@@ -18,7 +18,9 @@ namespace API.Helpers
                 src => src.Photos.FirstOrDefault(X => X.IsMain).Url))
             .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Age.CalculateAge()))
             .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City.CitytName))
-            .ForMember(dest => dest.District, opt => opt.MapFrom(src => src.District.DistrictName));
+            .ForMember(dest => dest.District, opt => opt.MapFrom(src => src.District.DistrictName))
+            .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.CategoryName))
+            .ForMember(dest => dest.SubCategory, opt => opt.MapFrom(src => src.SubCategory.SubCategoryName));
             CreateMap<Photo, PhotoDto>().ReverseMap();
             CreateMap<ServiceUpdateDto, ServiceProvider>();
             CreateMap<City, CityDto>().ReverseMap();

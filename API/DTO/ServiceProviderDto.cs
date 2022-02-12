@@ -25,6 +25,8 @@ namespace API.DTO
         public DateTime Created { get; set; }
         public string City { get; set; }
         public string District { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
         public ICollection<PhotoDto> Photos { get; set; }
     }
 }

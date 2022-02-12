@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using API.Entities;
 using API.Helpers;
 
@@ -9,6 +8,12 @@ namespace API.Extension
 {
     public static class ServiceFilterExtensions
     {
+
+        // public static IQueryable<ServiceProvider> ApproveProfile(this IQueryable<ServiceProvider> query)
+        // {
+        //     return query = query.Where(x=>x.Isapproved == )
+        // }
+
         public static IQueryable<ServiceProvider> Search(this IQueryable<ServiceProvider> query, string SearchTearm)
         {
             if (string.IsNullOrWhiteSpace(SearchTearm)) return query;

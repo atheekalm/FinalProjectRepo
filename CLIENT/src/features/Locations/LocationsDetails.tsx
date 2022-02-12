@@ -50,13 +50,12 @@ export default function LocationsDetails() {
     setCities(cities.filter(ListCity => ListCity.districtId === districtId));
   };
 
-  
   const SelectCity = (CityName: string) => {
     setOpen(false);
     setSelectedCity(CityName);
     dispatch(setServiceParams({ City: CityName }))
-
   }
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

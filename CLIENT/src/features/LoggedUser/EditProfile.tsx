@@ -1,6 +1,6 @@
 import { LocalizationProvider, DatePicker, LoadingButton } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import { Container, Paper, Typography, Box, Grid, TextField, FormControl, InputLabel, Select, MenuItem, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
+import { Container, Grid, TextField, FormControl, InputLabel, Select, MenuItem, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 import { useEffect, useState } from "react"
 import { useForm, FieldValues } from "react-hook-form";
 import { useHistory, Redirect } from "react-router-dom";
@@ -119,7 +119,7 @@ export default function EditProfile() {
                                                 <em>None</em>
                                             </MenuItem>
                                             {districts.map(district => (
-                                                <MenuItem onClick={() => handleClick_District(district.id, district.districtName)} value={district.districtName}>{district.districtName}</MenuItem>
+                                                <MenuItem key={district.id} onClick={() => handleClick_District(district.id, district.districtName)} value={district.districtName}>{district.districtName}</MenuItem>
                                             ))}
                                         </Select>
                                     </FormControl>
@@ -137,7 +137,7 @@ export default function EditProfile() {
                                                 <em>None</em>
                                             </MenuItem>
                                             {getCities.map(city => (
-                                                <MenuItem onClick={() => handleClick_City(city.citytName)} value={city.citytName}>{city.citytName}</MenuItem>
+                                                <MenuItem key={city.id} onClick={() => handleClick_City(city.citytName)} value={city.citytName}>{city.citytName}</MenuItem>
                                             ))}
                                         </Select>
                                     </FormControl>
@@ -158,7 +158,7 @@ export default function EditProfile() {
                                                 <em>None</em>
                                             </MenuItem>
                                             {categories.map(categor => (
-                                                <MenuItem onClick={() => handleClick_Category(categor.id, categor.categoryName)} value={categor.categoryName}>{categor.categoryName}</MenuItem>
+                                                <MenuItem key={categor.id} onClick={() => handleClick_Category(categor.id, categor.categoryName)} value={categor.categoryName}>{categor.categoryName}</MenuItem>
                                             ))}
                                         </Select>
                                     </FormControl>
@@ -177,7 +177,7 @@ export default function EditProfile() {
                                                 <em>None</em>
                                             </MenuItem>
                                             {getSubCategory.map(getSub => (
-                                                <MenuItem onClick={() => handleClick_SubCategory(getSub.subCategoryName)} value={getSub.subCategoryName}>{getSub.subCategoryName}</MenuItem>
+                                                <MenuItem key={getSub.id} onClick={() => handleClick_SubCategory(getSub.subCategoryName)} value={getSub.subCategoryName}>{getSub.subCategoryName}</MenuItem>
                                             ))}
                                         </Select>
                                     </FormControl>

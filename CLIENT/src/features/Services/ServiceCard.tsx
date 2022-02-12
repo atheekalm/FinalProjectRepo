@@ -87,13 +87,17 @@ export default function ServiceCard({ service }: Props) {
     const cardforMDscreen = (
         <>
 
-            <Container style={{ margin: '8px', borderRadius: '20px', display: 'inline-block', width: '250px', backgroundColor: '#dfe3eb' }}>
+            <Container 
+            style={{ margin: '8px',
+             borderRadius: '20px', display: 'inline-block', 
+             width: '250px', background: 'white' }}>
                 <Box
                     sx={{
                         marginTop: 3,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
+                        bgcolor: 'background.paper'
                     }}
                 >
                     <Avatar src={service.photoUrl} sx={{ width: 100, height: 100 }} />

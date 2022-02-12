@@ -1,13 +1,10 @@
-import { Avatar, Box, Button, Container, Divider, Fab, Grid, List, ListItem, Paper, Rating, Tab, Tabs, TextField, Typography, useTheme } from "@mui/material";
+import { Avatar, Box, Button, Container, Grid, Paper, Rating, Tab, Tabs, Typography } from "@mui/material";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../test_redux/configureStore";
 import { fetchServiceAsync, serviceSelectors } from "./serviceSlice";
-import SendIcon from '@mui/icons-material/Send';
 import UserPhotoCollection from "./UserPhotoCollection";
-
-
-
+import MessageOneDir from "../Chat/MessageOneDir";
 
 
 interface TabPanelProps {
@@ -234,47 +231,7 @@ export default function ServiceCardDetails() {
 
 
 
-
-
-
-                <Box
-                  sx={{
-                    marginTop: 4,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Container>
-                    <Grid item >
-                      <List >
-                        <ListItem key="1">
-                          <Grid container>
-                            <Grid item >
-
-                            </Grid>
-                          </Grid>
-                        </ListItem>
-                      </List>
-                      <Divider />
-
-                      <Grid container style={{ padding: '20px' }}>
-                        <Grid item xs={11}>
-                          <TextField id="outlined-basic-email" label="Type Something" fullWidth />
-                        </Grid>
-                        <Grid xs={1} >
-                          <Fab color="primary" aria-label="add"><SendIcon /></Fab>
-                        </Grid>
-                      </Grid>
-
-
-
-
-
-
-                    </Grid>
-                  </Container>
-                </Box>
+                <MessageOneDir />
 
 
 

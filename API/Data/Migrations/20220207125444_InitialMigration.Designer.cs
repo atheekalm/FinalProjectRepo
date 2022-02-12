@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Trach.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220207124407_InitialMigration")]
+    [Migration("20220207125444_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

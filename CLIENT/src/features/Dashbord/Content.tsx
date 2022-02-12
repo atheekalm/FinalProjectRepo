@@ -13,7 +13,9 @@ import Services from "../Services/Services";
 import LocationsDetails from "../Locations/LocationsDetails";
 import CategoryDetails from "../Category/CategoryDetails";
 import SearchService from "./SearchService";
-
+import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import { useAppDispatch } from "../test_redux/configureStore";
+import { resetParams } from "../Services/serviceSlice";
 
 
 
@@ -21,6 +23,7 @@ import SearchService from "./SearchService";
 export default function Content() {
     const theme = useTheme();
     const screenMathces = useMediaQuery(theme.breakpoints.up('sm'));
+    const dispatch = useAppDispatch();
     const sidebar = (
         <>
             <Grid item style={{ height: '100vh', width: '15rem', margin: '1rem' }}>
@@ -58,6 +61,12 @@ export default function Content() {
                             </ListItemIcon>
                             <ListItemText primary="In Place" />
                         </ListItemButton>
+                        <ListItemButton onClick={()=>dispatch(resetParams())}>
+                            <ListItemIcon>
+                                <FolderSharedIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="All Services" />
+                        </ListItemButton>
                     </List>
                 </Paper>
                 <Paper sx={{ mb: 2, p: 2 }}>
@@ -78,7 +87,7 @@ export default function Content() {
     )
     return (
         <>
-            <Grid container item>
+            <Grid container item sx={{backgroundColor:'#eaeaea'}}>
                 {screenMathces ? sidebar : null}
                 <Grid item xs md xl >
                     <Services />
@@ -87,13 +96,11 @@ export default function Content() {
             <Box sx={{
                 display: 'flex',
                 justifyContent: 'flex-end',
-                p: 1,
-                m: 1,
-                bgcolor: 'background.paper',
+                bgcolor: '#eaeaea',
+                p:1
             }}>
                 <Pagination count={13} size="large" />
             </Box>
-
         </>
     )
 }

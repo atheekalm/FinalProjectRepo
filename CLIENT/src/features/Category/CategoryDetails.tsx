@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../test_redux/configureStore';
 import CategoryIcon from '@mui/icons-material/Category';
 import { categoriesSelector, fetchCategories, fetchsubcategories, subcategoriesSelector } from './CategorySlice';
 import { subcategory } from '../../app/models/Category';
+import { setServiceParams } from '../Services/serviceSlice';
 
 
 
@@ -53,7 +54,7 @@ export default function LocationsDetails() {
   const SelectSub = (subcato: string) => {
     setOpen(false);
     setSubcatego(subcato);
-    // dispatch(setServiceParams({ City: CityName }))
+    dispatch(setServiceParams({ SubCategory: subcato }))
 
   }
 
