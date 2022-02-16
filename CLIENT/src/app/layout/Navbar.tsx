@@ -51,7 +51,7 @@ export default function Navbar() {
         <Toolbar>
           {screenIconMatches ? drawerIcon : null}
           <Typography variant="h6" component={NavLink} to={'/'} sx={{ flexGrow: 1 }}>
-            MYAPP
+            Trach
           </Typography>
           {user ? (<Authenticated LoadExist={LoadExist} />
           ) : (

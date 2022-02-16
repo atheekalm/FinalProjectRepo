@@ -105,7 +105,7 @@ export default function ServiceCard({ service }: Props) {
                         {service.firstName} {service.lasttName}
                     </Typography>
                     <Typography component="h1" variant="body2" style={{ padding: 0 }}>
-                        {service.district} / {service.city}
+                        {service.city}
                     </Typography>
                     <Grid item={true} container style={{ marginBottom: '1rem', padding: 0 }} >
                         <Grid item xs textAlign={'center'}>

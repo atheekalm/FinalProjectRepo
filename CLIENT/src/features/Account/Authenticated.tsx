@@ -42,7 +42,7 @@ export default function Authenticated({ LoadExist }: Props) {
             >
                 <AccountCircle sx={{ color: 'white', }} />
             </Button>
-            
+
 
             {/* <IconButton
               size="large"

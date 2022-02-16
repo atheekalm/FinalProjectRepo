@@ -85,163 +85,70 @@ export default function ServiceCardDetails() {
   }
 
   return (
-    <>
 
-
-
-
-      <Container>
-        <Grid item container>
-          <Grid item xs={6} md={4}>
-            <Box
-              sx={{
-                marginTop: 3,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <Avatar src={service?.photoUrl} sx={{ width: 200, height: 200 }} />
-              <Typography component="h1" variant="subtitle1" style={{ padding: 0 }}>
-                <Rating name="read-only" style={{ padding: 0, margin: 0 }} value={ratingvalue} readOnly />
-              </Typography>
-              <Typography component="h1" variant="h5" style={{ padding: 0 }}>
-                {service?.firstName} {service?.lasttName}
-              </Typography>
-              <Typography component="h1" variant="subtitle1" style={{ padding: 0 }}>
-                Category - {service?.lasttName}
-              </Typography>
-              <Typography component="h1" variant="subtitle1" style={{ padding: 0 }}>
-                {service?.district} / {service?.city}
-              </Typography>
-              <Grid container sx={{ alignItems: 'center' }}>
-                <Grid xs={4} >
-                  <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}>
-                    hello world
-                  </Box>
-                </Grid>
-                <Grid xs={4} >
-                  <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}>
-                    <Rating name="read-only" value={ratingvalue} readOnly />
-                  </Box>
-                </Grid>
-                <Grid xs={4} >
-                  <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}>
-                    hello world
-                  </Box>
-                </Grid>
+    <Container>
+      <Grid item container >
+        <Grid item xs={6} md={4}>
+          <Box
+            sx={{
+              marginTop: 3,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar src={service?.photoUrl} sx={{ width: 200, height: 200 }} />
+            <Typography component="h1" variant="subtitle1" style={{ padding: 0 }}>
+              <Rating name="read-only" style={{ padding: 0, margin: 0 }} value={ratingvalue} readOnly />
+            </Typography>
+            <Typography component="h1" variant="h5" style={{ padding: 0 }}>
+              {service?.firstName} {service?.lasttName}
+            </Typography>
+            <Typography component="h1" variant="subtitle1" style={{ padding: 0 }}>
+              Category - {service?.lasttName}
+            </Typography>
+            <Typography component="h1" variant="subtitle1" style={{ padding: 0 }}>
+              {service?.district} / {service?.city}
+            </Typography>
+            {/* <Grid container sx={{ alignItems: 'center' }}>
+              <Grid xs={4} >
+                <Box sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}>
+                  hello world
+                </Box>
               </Grid>
-              <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}>
-                <Button variant="outlined" sx={{ width: '400px' }}>Send Invitation</Button>
-              </Box>
+              <Grid xs={4} >
+                <Box sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}>
+                  <Rating name="read-only" value={ratingvalue} readOnly />
+                </Box>
+              </Grid>
+              <Grid xs={4} >
+                <Box sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}>
+                  hello world
+                </Box>
+              </Grid>
+            </Grid> */}
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}>
+              <Button variant="outlined" sx={{ width: '400px' }}>Send Invitation</Button>
             </Box>
-          </Grid>
-          <Grid xs={6} md={8}>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <Container>
-
-              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered variant="fullWidth">
-                  <Tab label="Profile" {...a11yProps(0)} />
-                  <Tab label="Photos" {...a11yProps(1)} />
-                  <Tab label="Messages" {...a11yProps(2)} />
-                </Tabs>
-              </Box>
-              <TabPanel value={value} index={0}>
-                <Container>
-                  <Box component={Paper} >
-                    <Typography sx={{ margin: 4 }}>
-                      <Typography variant="h5">about</Typography>
-                      {service?.about}
-                    </Typography>
-                  </Box>
-                  <Box component={Paper}>
-                    <Typography sx={{ margin: 4 }}>
-                      <Typography variant="h5">skills</Typography>
-                      {service?.skills}
-                    </Typography>
-                  </Box>
-                  <Box component={Paper}>
-                    <Typography sx={{ margin: 4 }}>
-                      <Typography variant="h5">education</Typography>
-                      {service?.education}
-                    </Typography>
-                  </Box>
-                  <Box component={Paper}>
-                    <Typography sx={{ margin: 4 }}>
-                      <Typography variant="h5">workSummery</Typography>
-                      {service?.workSummery}
-                    </Typography>
-                  </Box>
-                </Container>
-              </TabPanel>
-              <TabPanel value={value} index={1}>
-
-
-
-                <UserPhotoCollection userPhotos={service!?.photos} />
-
-
-
-              </TabPanel>
-              <TabPanel value={value} index={2}>
-
-
-
-                <MessageOneDir />
-
-
-
-
-              </TabPanel>
-
-            </Container>
-          </Grid>
+          </Box>
         </Grid>
-      </Container>
+        <Grid xs={6} md={8}>
 
 
 
@@ -249,111 +156,92 @@ export default function ServiceCardDetails() {
 
 
 
-      {/* <Container>
-        <Grid container item sx={{ marginTop: 2 }}>
-          <Grid item >
-            <Avatar
-              alt={service?.lasttName}
-              src={service?.photoUrl}
-              sx={{
-                width: 200, height: 200,
-              }}
-              variant="rounded"
-            />
-            <Box sx={{ mr: '5rem' }} />
-          </Grid>
-          <Grid item >
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-              <ListItem>
-                <ListItemText primary={service?.firstName} secondary={service?.lasttName} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary='SubCategory' />
-              </ListItem>
-              <Grid>
-                <Chip sx={{ margin: '0.1rem' }} label="Chip Outlined" variant="outlined" />
-                <Chip sx={{ margin: '0.1rem' }} label="Chip Outlined" variant="outlined" />
-                <Chip sx={{ margin: '0.1rem' }} label="Chip Outlined" variant="outlined" />
-                <Chip sx={{ margin: '0.1rem' }} label="Chip Outlined" variant="outlined" />
-              </Grid>
-            </List>``
-          </Grid>
-          <Grid item >
-            <Button variant="contained">Request </Button>
-          </Grid>
-          <Grid item >
-            <IconButton >
-              <FavoriteBorderIcon />
-            </IconButton>
-            <IconButton >
-              <ChatBubbleOutlineIcon />
-            </IconButton>
-          </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <Container>
+
+            <Box sx={{ borderBottom: 1, borderColor: 'divider', }}>
+              <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered variant="fullWidth">
+                <Tab label="Profile" {...a11yProps(0)} />
+                <Tab label="Photos" {...a11yProps(1)} />
+                <Tab label="Messages" {...a11yProps(2)} />
+              </Tabs>
+            </Box>
+            <TabPanel value={value} index={0}>
+              <Container>
+                <Box component={Paper} >
+                  <Typography sx={{ margin: 4 }}>
+                    <Typography variant="h5">about</Typography>
+                    {service?.about}
+                  </Typography>
+                </Box>
+                <Box component={Paper}>
+                  <Typography sx={{ margin: 4 }}>
+                    <Typography variant="h5">skills</Typography>
+                    {service?.skills}
+                  </Typography>
+                </Box>
+                <Box component={Paper}>
+                  <Typography sx={{ margin: 4 }}>
+                    <Typography variant="h5">education</Typography>
+                    {service?.education}
+                  </Typography>
+                </Box>
+                <Box component={Paper}>
+                  <Typography sx={{ margin: 4 }}>
+                    <Typography variant="h5">workSummery</Typography>
+                    {service?.workSummery}
+                  </Typography>
+                </Box>
+              </Container>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+
+
+
+              <UserPhotoCollection userPhotos={service!?.photos} />
+
+
+
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+
+
+
+              <MessageOneDir />
+
+
+
+
+            </TabPanel>
+
+          </Container>
         </Grid>
-
-        <Grid container sx={{ marginTop: 2 }}>
-          <Grid item >
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-              <ListItem sx={{ p: 0 }}>
-                <ListItemButton >
-                  <ListItemIcon>
-                    <LocationOnIcon />
-                  </ListItemIcon>
-                  <ListItemText >{service?.district}/{service?.city}</ListItemText>
-                </ListItemButton>
-              </ListItem>
-              <ListItem sx={{ p: 0 }}>
-                <ListItemButton >
-                  <ListItemIcon>
-                    <MailOutlineIcon />
-                  </ListItemIcon>
-                  <ListItemText >{service?.email}</ListItemText>
-                </ListItemButton>
-              </ListItem>
-              <ListItem sx={{ p: 0 }}>
-                <ListItemButton >
-                  <ListItemIcon>
-                    <CallEndIcon />
-                  </ListItemIcon>
-                  <ListItemText >{service?.phone}</ListItemText>
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Grid>
-          <Grid item  >
-            <Typography variant="h5" gutterBottom component="div">
-              about
-            </Typography>
-            <Typography variant="body2" gutterBottom component="div">
-              {service?.about}
-            </Typography>
-          </Grid>
-          <Grid item >
-            <Typography variant="h6" gutterBottom component="div">
-              skills
-            </Typography>
-            <Typography variant="body2" gutterBottom component="div">
-              {service?.skills}
-            </Typography>
-          </Grid>
-        </Grid>
+      </Grid>
+    </Container>
 
 
-        <Grid container sx={{ marginTop: 2 }}>
-          <Grid item >
-            <Typography variant="h6" gutterBottom component="div">
-              languages
-            </Typography>
-          </Grid>
-          <Grid item >
-            <Typography variant="h6" gutterBottom component="div">
-              workSummery
-            </Typography>
-          </Grid>
-        </Grid>
 
 
-      </Container> */}
-    </>
-  )
+
+  );
 }

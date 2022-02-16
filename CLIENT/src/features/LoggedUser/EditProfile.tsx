@@ -1,6 +1,7 @@
+import styled from "@emotion/styled";
 import { LocalizationProvider, DatePicker, LoadingButton } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import { Container, Grid, TextField, FormControl, InputLabel, Select, MenuItem, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
+import { Container, Grid, TextField, FormControl, InputLabel, Select, MenuItem, FormControlLabel, FormLabel, Radio, RadioGroup, Button, Input } from "@mui/material";
 import { useEffect, useState } from "react"
 import { useForm, FieldValues } from "react-hook-form";
 import { useHistory, Redirect } from "react-router-dom";
@@ -8,7 +9,8 @@ import { subcategory } from "../../app/models/Category";
 import { City } from "../../app/models/Location";
 import { categoriesSelector, subcategoriesSelector } from "../Category/CategorySlice";
 import { locationSelectors, locationCitySelectors, fetchDistrict, FetchAllCities } from "../Locations/locationSlice";
-import { useAppDispatch, useAppSelector } from "../test_redux/configureStore"
+import { useAppDispatch, useAppSelector } from "../test_redux/configureStore";
+
 
 export default function EditProfile() {
 
@@ -65,23 +67,19 @@ export default function EditProfile() {
         history.push('/EditProfile');
     }
 
-
-    const { LoadExist } = useAppSelector(state => state.ProfieExit);
-
-    if (!LoadExist) return <Redirect to="/" />
-
     return (
         <>
             <Container component="main" >
-                <Grid container spacing={2} sx={{ mt: 4 }}>
-                    <Grid xs={12} md={5} sx={{ margin: 1 }}>
+                <Grid container spacing={2} >
+                    <Grid item xs={12} md={5} sx={{ margin: 1 }}>
                         <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
-                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />                <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
+                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
+                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
                         <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
                         <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
                         <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" sx={{ margin: 1 }} />
                     </Grid>
-                    <Grid xs={12} md={6} >
+                    <Grid item xs={12} md={6} >
                         <FormControl sx={{ margin: 1 }}>
                             <FormLabel>Gender</FormLabel>
                             <RadioGroup
@@ -112,7 +110,6 @@ export default function EditProfile() {
                                         <Select
                                             labelId="demo-simple-select-label"
                                             value={SelectedDistrict}
-                                            autoFocus
                                             {...register('district', { required: 'district is Required' })}
                                         >
                                             <MenuItem value="">
@@ -130,7 +127,6 @@ export default function EditProfile() {
                                         <Select
                                             labelId="demo-simple-select-label"
                                             value={SelectedCity}
-                                            autoFocus
                                             {...register('city', { required: 'city is Required' })}
                                         >
                                             <MenuItem value="">
@@ -151,7 +147,6 @@ export default function EditProfile() {
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
                                             value={SelectedCategory}
-                                            autoFocus
                                             {...register('category', { required: 'category is Required' })}
                                         >
                                             <MenuItem value="">
@@ -170,7 +165,6 @@ export default function EditProfile() {
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
                                             value={SelectedSubCategory}
-                                            autoFocus
                                             {...register('subCategory', { required: 'subCategory is Required' })}
                                         >
                                             <MenuItem value="">
