@@ -1,0 +1,35 @@
+
+.img-width{
+    width: 250px;
+    padding: 0;
+    margin: 20px;
+    margin-bottom: 0;
+    /* border-radius: 20px; */
+}
+.sidebar-container{
+    width: 250px;
+}
+.container-bg{
+    background-color: white;
+    /* border-radius: 20px; */
+    padding: 0;
+}
+.padding-class{
+    padding: 0%;
+}
+.align-center{
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+  }
+  .h6{
+      font-weight: normal;
+  }
+
+  .list-group-item{
+      /* background-color: rgb(238, 238, 238); */
+  }
+  .text-mar{
+      margin: 5px;
+  }
