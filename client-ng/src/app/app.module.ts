@@ -15,6 +15,8 @@ import { ServiceMessageComponent } from './members/service-message/service-messa
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { AuthComponent } from './auth/auth.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -36,7 +38,9 @@ import { AuthComponent } from './auth/auth.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ],
+    HttpClientModule, 
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

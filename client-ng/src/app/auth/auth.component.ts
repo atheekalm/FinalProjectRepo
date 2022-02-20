@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-
+  model: any;
   constructor() { }
 
   ngOnInit(): void {
+  }
+  login() {
+    console.log(this.model);
   }
 
 }

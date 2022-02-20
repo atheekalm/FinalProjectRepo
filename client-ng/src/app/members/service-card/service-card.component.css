@@ -6,6 +6,10 @@
     justify-items: center;
     align-items: center;
   }
+  .circle-status{
+    width: 250px;
+    color: aquamarine;
+  }
   .card-container{
     width: 240px;
     border-radius: 20px;
