@@ -11,12 +11,13 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ServiceCardComponent } from './members/service-card/service-card.component';
 import { ServiceDetailsComponent } from './members/service-details/service-details.component';
 import { ServiceListComponent } from './members/service-list/service-list.component';
-import { ServiceMessageComponent } from './members/service-message/service-message.component';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { AuthComponent } from './auth/auth.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CreateProfileComponent } from './members/create-profile/create-profile.component';
+import { MaterialModule } from './material/material.module';
 
 
 
@@ -30,16 +31,17 @@ import { FormsModule } from '@angular/forms';
     ServiceCardComponent,
     ServiceDetailsComponent,
     ServiceListComponent,
-    ServiceMessageComponent,
     PhotoEditorComponent,
     AuthComponent,
+    CreateProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule, 
-    FormsModule
+    FormsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

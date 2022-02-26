@@ -16,12 +16,6 @@ export default function ServiceCard({ service }: Props) {
 
     const cardforSMscreen = (
         <>
-
-
-
-
-
-
             <Box
                 sx={{
                     display: 'flex',

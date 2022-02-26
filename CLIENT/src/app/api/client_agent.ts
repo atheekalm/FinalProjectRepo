@@ -2,9 +2,8 @@ import { Service } from './../models/Service';
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { store } from "../../features/test_redux/configureStore";
-import { request } from 'http';
 
-const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
+// const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
 
 axios.defaults.baseURL = "https://localhost:5001/api/";
 
@@ -17,7 +16,7 @@ axios.interceptors.request.use(config => {
 })
 
 axios.interceptors.response.use(async responce => {
-    await await sleep();
+    // await await sleep();
     return responce
 }, (error: AxiosError) => {
     const { data, status } = error.response!;

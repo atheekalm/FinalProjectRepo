@@ -1,3 +1,4 @@
+import { AuthServiceService } from './../services/auth-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,13 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  model: any;
-  constructor() { }
+  model: any = {};
+  loggedIn: boolean;
 
-  ngOnInit(): void {
+
+
+  constructor(private auth: AuthServiceService) { }
+
+  ngOnInit() {
   }
+
   login() {
-    console.log(this.model);
+    this.auth.login(this.model).subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.log(error)
+    })
   }
 
 }
