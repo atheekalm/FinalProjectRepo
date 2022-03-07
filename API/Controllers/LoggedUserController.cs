@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using API.Controllers;
 using API.Data;
 using API.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class LoggedUserController : BaseApiController
     {
         private readonly DataContext _context;

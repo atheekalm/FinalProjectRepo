@@ -40,5 +40,7 @@ namespace API.Entities
         public Category Category { get; set; }
         public int CategoryId { get; set; }
         public ICollection<Photo> Photos { get; set; }
+        public ICollection<View> Views { get; set; }
+        public ICollection<TaskCount> TasksCounts { get; set; }
     }
 }

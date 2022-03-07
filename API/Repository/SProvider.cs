@@ -54,7 +54,7 @@ namespace API.Repository
         public async Task<ServiceProviderDto> GetSProviderAsync(int id)
         {
             return await _context.ServiceProviders
-           .Where(x => x.AppUserId == id)
+           .Where(x => x.Id == id)
            .ProjectTo<ServiceProviderDto>(_mapper.ConfigurationProvider)
            .SingleOrDefaultAsync();
         }

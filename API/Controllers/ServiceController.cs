@@ -49,7 +49,7 @@ namespace API.Controllers
 
         }
 
-
+        [AllowAnonymous]
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<ActionResult<ServiceProvider>> GetService(int id)
         {
