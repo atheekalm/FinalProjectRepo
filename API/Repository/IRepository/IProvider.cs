@@ -10,6 +10,7 @@ namespace API.Repository.IRepository
 {
     public interface IProvider
     {
+        Task<ServiceProvider> getProfie(int id);
         Task<ServiceProvider> GetServiceProviderByIdAsync(int Id);
         Task<ServiceProvider> IfserviceExistReturnUser(int id);
         Task<ServiceProvider> GetServiceProviderByUsernameAsync(string username);

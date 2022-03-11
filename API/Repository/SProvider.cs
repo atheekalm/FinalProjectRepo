@@ -31,6 +31,11 @@ namespace API.Repository
             await _context.ServiceProviders.AddAsync(provider);
         }
 
+        public Task<ServiceProvider> getProfie(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ServiceProvider> GetServiceProviderByIdAsync(int Id)
         {
             return await _context.ServiceProviders

@@ -30,8 +30,7 @@ namespace API.Controllers
         public async Task<ActionResult<MessagesDto>> Createmessage(CreateMessageDto CreateMessageDto)
         {
             var username = User.GetUserName();
-            if (username == CreateMessageDto.RecipientUserName.ToLower())
-                BadRequest("You cannot Send Message to YourSelf");
+            if (username == CreateMessageDto.RecipientUserName.ToLower()) return BadRequest("You cannot Send Message to YourSelf");
             var sender = await _appuser.GetAppUserByUserName(username);
             var recipient = await _appuser.GetAppUserByUserName(CreateMessageDto.RecipientUserName);
             if (recipient == null) return NotFound();
@@ -57,12 +56,12 @@ namespace API.Controllers
             Response.AddPaginationHeader(messages.CurrentPage, messages.PageSize, messages.TotalCount, messages.TotalPages);
             return messages;
         }
-        
+
         [HttpGet("thread/{username}")]
         public async Task<ActionResult<IEnumerable<MessagesDto>>> GetMessagethread(string username)
         {
             var currentUserName = User.GetUserName();
-            return Ok(await _message.GetMessageThred(currentUserName,username));
+            return Ok(await _message.GetMessageThred(currentUserName, username));
         }
     }
 }

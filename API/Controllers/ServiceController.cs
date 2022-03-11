@@ -34,13 +34,22 @@ namespace API.Controllers
         }
 
 
+        [HttpGet("myprofile/{userid}")]
+        public async Task<ActionResult<ServiceProviderDto>> Getmyprofile(int userid)
+        {
+            var service = await _ServiceProvider.GetServiceProviderByIdAsync(userid);
+            return Ok(_mapper.Map<ServiceProviderDto>(service));
+        }
+
+
+
         [HttpPost("CreateProfile")]
         public async Task<IActionResult> CreateProfile(ServiceProviderCreateProfileDtos profileDtos)
         {
             var UserName = User.GetUserName();
             var Owner = await _LoggedAppUser.GetAppUserByUserName(UserName);
             var userExit = await _LoggedAppUser.IfserviceExist(Owner.Id);
-            if(userExit) return BadRequest("Already Profile Exits");
+            if (userExit) return BadRequest("Already Profile Exits");
             var profile = _mapper.Map<ServiceProvider>(profileDtos);
             profile.AppUserId = Owner.Id;
             await _ServiceProvider.CreateProfile(profile);
@@ -100,7 +109,7 @@ namespace API.Controllers
             }
             return BadRequest("Problem Adding Photos");
         }
-        
+
 
         [HttpPut("set-main-photo/{photoId}")]
         public async Task<ActionResult> SetmainPhoto(int photoId)
